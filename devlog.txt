@@ -1,0 +1,9 @@
+
+21.12
+* project setup
+* room scale vr setup
+
+11.01
+* install probuilder, progrids
+* rendertexturei implementatsioon
+* silmade positsioonide kätte saamine eraldi
