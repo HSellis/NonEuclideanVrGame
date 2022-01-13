@@ -7,3 +7,8 @@
 * install probuilder, progrids
 * rendertexturei implementatsioon
 * silmade positsioonide kätte saamine eraldi
+
+13.01
+* silmad eraldi objektidena parentitud camera alla
+* rendertexturei width ja height ning dubleeriva camera FOV samaks mis headseti displayl
+* ScreenCutoutShaderi modifitseerimine, et supportiks single pass instancing renderdamist

@@ -14,6 +14,8 @@ public class XRNodeTest : MonoBehaviour
     public GameObject leftEyeball;
     public GameObject rightEyeball;
 
+    public Transform headsetTransform;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,5 +50,8 @@ public class XRNodeTest : MonoBehaviour
         rightEyeball.transform.position = right_eye_pos;
         rightEyeball.transform.rotation = right_eye_rot;
 
+        Debug.Log(left_eye_pos - right_eye_pos);
+        Debug.Log(left_eye_pos - headsetTransform.position);
+        Debug.Log(right_eye_pos - headsetTransform.position);
     }
 }
