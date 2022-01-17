@@ -11,10 +11,9 @@ public class XRNodeTest : MonoBehaviour
     private Vector3 left_eye_pos, right_eye_pos;
     private Quaternion left_eye_rot, right_eye_rot;
 
-    public GameObject leftEyeball;
-    public GameObject rightEyeball;
-
-    public Transform headsetTransform;
+    public Transform headset;
+    public Transform leftEye;
+    public Transform rightEye;
 
     // Start is called before the first frame update
     void Start()
@@ -44,14 +43,13 @@ public class XRNodeTest : MonoBehaviour
         nodeStates[1].TryGetRotation(out right_eye_rot);
 
 
-        leftEyeball.transform.position = left_eye_pos;
-        leftEyeball.transform.rotation = left_eye_rot;
-
-        rightEyeball.transform.position = right_eye_pos;
-        rightEyeball.transform.rotation = right_eye_rot;
-
         Debug.Log(left_eye_pos - right_eye_pos);
-        Debug.Log(left_eye_pos - headsetTransform.position);
-        Debug.Log(right_eye_pos - headsetTransform.position);
+        Debug.Log(left_eye_pos - headset.position);
+        Debug.Log(right_eye_pos - headset.position);
+
+        leftEye.position = left_eye_pos;
+        leftEye.rotation = left_eye_rot;
+        rightEye.position = right_eye_pos;
+        rightEye.rotation = right_eye_rot;
     }
 }
