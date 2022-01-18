@@ -12,3 +12,10 @@
 * silmad eraldi objektidena parentitud camera alla
 * rendertexturei width ja height ning dubleeriva camera FOV samaks mis headseti displayl
 * ScreenCutoutShaderi modifitseerimine, et supportiks single pass instancing renderdamist
+
+17.01
+* portal camera rotationi Z ei duplikeeritud, ajutine fix sellele (töötab ainult sama rotationiga portalite puhul)
+* teleportimine portalite vahel
+
+18.01
+* tehtud Portal prefab, pole enam vaja eraldi PortalTextureSetupi

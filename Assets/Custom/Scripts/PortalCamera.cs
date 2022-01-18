@@ -6,6 +6,9 @@ using UnityEngine.XR;
 
 public class PortalCamera : MonoBehaviour
 {
+    private Camera camera;
+    public Material cameraTextureMat;
+
     public Transform duplicatedEye;
     public Transform portal;
     public Transform otherPortal;
@@ -13,7 +16,14 @@ public class PortalCamera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+        camera = GetComponent<Camera>();
+        if (camera.targetTexture != null)
+        {
+            camera.targetTexture.Release();
+        }
+        //camera1LeftEye.targetTexture = new RenderTexture(Screen.width, Screen.height, 24);
+        camera.targetTexture = new RenderTexture(2016, 2240, 24);
+        cameraTextureMat.mainTexture = camera.targetTexture;
     }
 
     // Update is called once per frame
