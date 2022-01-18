@@ -6,12 +6,15 @@ using UnityEngine.XR;
 
 public class PortalCamera : MonoBehaviour
 {
-    private Camera camera;
+    private new Camera camera;
     public Material cameraTextureMat;
 
     public Transform duplicatedEye;
-    public Transform portal;
-    public Transform otherPortal;
+    
+    //public Transform portal;
+    //public Transform otherPortal;
+    public Transform thisRoom;
+    public Transform otherRoom;
 
     // Start is called before the first frame update
     void Start()
@@ -29,15 +32,21 @@ public class PortalCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 eyeOffsetFromPortal = duplicatedEye.position - otherPortal.position;
-        transform.position = portal.position + eyeOffsetFromPortal;
+        //Vector3 eyeOffsetFromPortal = duplicatedEye.position - otherPortal.position;
+        //transform.position = portal.position + eyeOffsetFromPortal;
 
-        float angularDiffBetweenPortalRotations = Quaternion.Angle(portal.rotation, otherPortal.rotation);
-        Quaternion portalRotationDifference = Quaternion.AngleAxis(angularDiffBetweenPortalRotations, Vector3.up);
+        //float angularDiffBetweenPortalRotations = Quaternion.Angle(portal.rotation, otherPortal.rotation);
+        //Quaternion portalRotationDifference = Quaternion.AngleAxis(angularDiffBetweenPortalRotations, Vector3.up);
 
         //Vector3 newCameraDirection = portalRotationDifference * duplicatedEye.forward;
         //transform.rotation = Quaternion.LookRotation(newCameraDirection, Vector3.up);
 
-        transform.rotation = duplicatedEye.rotation;
+        //transform.rotation = duplicatedEye.rotation;
+
+        Vector3 eyePosInOtherRoom = otherRoom.InverseTransformPoint(duplicatedEye.position);
+        transform.position = thisRoom.TransformPoint(eyePosInOtherRoom);
+
+        Quaternion eyeRotationInOtherRoom = Quaternion.Inverse(otherRoom.rotation) * duplicatedEye.rotation;
+        transform.rotation = thisRoom.rotation * eyeRotationInOtherRoom;
     }
 }

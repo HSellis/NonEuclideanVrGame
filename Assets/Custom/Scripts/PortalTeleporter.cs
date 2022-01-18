@@ -51,12 +51,15 @@ public class PortalTeleporter : MonoBehaviour
         {
             if (other.tag == "Player")
             {
+                playArea.parent = destinationRoom;
+                playArea.localPosition = new Vector3(0, 0, 0);
+                playArea.localRotation = Quaternion.Euler(0, 0, 0);
                 
-                float rotationDiff = -Quaternion.Angle(playArea.rotation, destinationRoom.rotation);
+                //float rotationDiff = -Quaternion.Angle(playArea.rotation, destinationRoom.rotation);
                 //rotationDiff += 180;
-                playArea.Rotate(Vector3.up, rotationDiff);
+                //playArea.Rotate(Vector3.up, rotationDiff);
 
-                playArea.position = destinationRoom.position;
+                //playArea.position = destinationRoom.position;
             } 
 
         }

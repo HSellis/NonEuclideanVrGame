@@ -20,3 +20,4 @@
 18.01
 * tehtud Portal prefab, pole enam vaja eraldi PortalTextureSetupi
 * playeri teleportimine muudetud ruumipõhiseks
+* portal camerad töötavad nüüd ka ruumipõhiselt, portalid töötavad ka eri rotationitega ruumide vahel
