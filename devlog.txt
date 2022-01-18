@@ -19,3 +19,4 @@
 
 18.01
 * tehtud Portal prefab, pole enam vaja eraldi PortalTextureSetupi
+* playeri teleportimine muudetud ruumipõhiseks

@@ -5,17 +5,18 @@ using UnityEngine;
 public class PortalTeleporter : MonoBehaviour
 {
     public Transform playArea;
-    public Transform receiver;
+    public Transform destinationRoom;
+    
 
     //private bool playerOverlap = false;
 
-    // Start is called before the first frame update
+    
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         /*
@@ -50,17 +51,15 @@ public class PortalTeleporter : MonoBehaviour
         {
             if (other.tag == "Player")
             {
-                Vector3 portalToPlayArea = playArea.transform.position - transform.position;
-                float rotationDiff = -Quaternion.Angle(transform.rotation, receiver.rotation);
-                rotationDiff += 180;
+                
+                float rotationDiff = -Quaternion.Angle(playArea.rotation, destinationRoom.rotation);
+                //rotationDiff += 180;
                 playArea.Rotate(Vector3.up, rotationDiff);
 
-                Vector3 positionOffset = Quaternion.Euler(0f, rotationDiff, 0f) * portalToPlayArea;
-                playArea.position = receiver.position + positionOffset;
+                playArea.position = destinationRoom.position;
             } 
 
         }
-        
     }
 
 }
