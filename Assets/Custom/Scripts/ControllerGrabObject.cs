@@ -9,17 +9,19 @@ public class ControllerGrabObject : MonoBehaviour
     public SteamVR_Behaviour_Pose controllerPose;
     public SteamVR_Action_Boolean grabAction;
 
-    private GameObject collidingObject;
-    private GameObject objectInHand;
+    private Grabbable collidingGrabbable;
+    private Grabbable grabbableInHand;
+    private Vector3 grabPointOffset;
 
 
     private void SetCollidingObject(Collider col)
     {
-        if (collidingObject || !col.GetComponent<Rigidbody>())
+        Grabbable newGrabbable = col.GetComponent<Grabbable>();
+        if (collidingGrabbable || newGrabbable == null)
         {
             return;
         }
-        collidingObject = col.gameObject;
+        collidingGrabbable = newGrabbable;
     }
 
     // Update is called once per frame
@@ -27,7 +29,7 @@ public class ControllerGrabObject : MonoBehaviour
     {
         if (grabAction.GetLastStateDown(handType))
         {
-            if (collidingObject)
+            if (collidingGrabbable)
             {
                 GrabObject();
             }
@@ -35,7 +37,16 @@ public class ControllerGrabObject : MonoBehaviour
 
         if (grabAction.GetLastStateUp(handType))
         {
-            if (objectInHand)
+            if (grabbableInHand)
+            {
+                ReleaseObject();
+            }
+        }
+
+        if (grabbableInHand)
+        {
+            Vector3 handToGrabbable = transform.position + grabPointOffset - grabbableInHand.transform.position;
+            if (handToGrabbable.magnitude > 0.25)
             {
                 ReleaseObject();
             }
@@ -45,6 +56,7 @@ public class ControllerGrabObject : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         SetCollidingObject(other);
+        
     }
 
     public void OnTriggerStay(Collider other)
@@ -54,20 +66,26 @@ public class ControllerGrabObject : MonoBehaviour
 
     public void OnTriggerExit(Collider other)
     {
-        if (!collidingObject)
+        if (!collidingGrabbable)
         {
             return;
         }
 
-        collidingObject = null;
+        collidingGrabbable = null;
     }
 
     private void GrabObject()
     {
-        objectInHand = collidingObject;
-        collidingObject = null;
-        var joint = AddFixedJoint();
-        joint.connectedBody = objectInHand.GetComponent<Rigidbody>();
+        grabbableInHand = collidingGrabbable;
+        collidingGrabbable = null;
+        grabPointOffset = grabbableInHand.transform.position - transform.position;
+
+        grabbableInHand.StartHolding(gameObject);
+        if (grabbableInHand.freelyMovable)
+        {
+            var joint = AddFixedJoint();
+            joint.connectedBody = grabbableInHand.GetComponent<Rigidbody>();
+        }
     }
 
     private FixedJoint AddFixedJoint()
@@ -80,14 +98,17 @@ public class ControllerGrabObject : MonoBehaviour
 
     private void ReleaseObject()
     {
+        grabbableInHand.StopHolding(gameObject);
+
         if (GetComponent<FixedJoint>())
         {
             GetComponent<FixedJoint>().connectedBody = null;
             Destroy(GetComponent<FixedJoint>());
-            objectInHand.GetComponent<Rigidbody>().velocity = controllerPose.GetVelocity();
-            objectInHand.GetComponent<Rigidbody>().angularVelocity = controllerPose.GetAngularVelocity();
+            grabbableInHand.GetComponent<Rigidbody>().velocity = controllerPose.GetVelocity();
+            grabbableInHand.GetComponent<Rigidbody>().angularVelocity = controllerPose.GetAngularVelocity();
 
         }
-        objectInHand = null;
+        grabbableInHand = null;
+        grabPointOffset = Vector3.zero;
     }
 }
