@@ -8,6 +8,7 @@ public class DoorHandle : Grabbable
     private float doorToHandAngleOffset;
 
     public Transform door;
+    public DoorLock doorLock;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +19,7 @@ public class DoorHandle : Grabbable
     // Update is called once per frame
     void Update()
     {
-        if (holdingHand)
+        if (holdingHand && !doorLock.isLocked)
         {
             float doorAngle = calculateDoorToHandAngle() + doorToHandAngleOffset;
             door.rotation = Quaternion.Euler(0, doorAngle, 0);
