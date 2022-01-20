@@ -27,3 +27,6 @@
 * VerticalPipe
 * Door
 * natuke duplicatedEye positsiooni korrigeerimist
+
+20.01
+* Door rotation fixed

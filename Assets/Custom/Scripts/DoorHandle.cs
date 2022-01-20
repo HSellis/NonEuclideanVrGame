@@ -5,7 +5,7 @@ using UnityEngine;
 public class DoorHandle : Grabbable
 {
     private GameObject holdingHand;
-    private Vector3 offsetFromHoldingHand;
+    private float doorToHandAngleOffset;
 
     public Transform door;
 
@@ -20,15 +20,16 @@ public class DoorHandle : Grabbable
     {
         if (holdingHand)
         {
-            Vector3 doorToHandNormalized = (holdingHand.transform.position - door.transform.position).normalized;
-            door.rotation = Quaternion.LookRotation(doorToHandNormalized, Vector3.left);
+            float doorAngle = calculateDoorToHandAngle() + doorToHandAngleOffset;
+            door.rotation = Quaternion.Euler(0, doorAngle, 0);
         }
     }
 
     public override void StartHolding(GameObject hand)
     {
         holdingHand = hand;
-        
+        float doorToHandAngle = calculateDoorToHandAngle();
+        doorToHandAngleOffset = door.eulerAngles.y - doorToHandAngle;
 
         transform.Rotate(-45, 0, 0);
     }
@@ -36,8 +37,16 @@ public class DoorHandle : Grabbable
     public override void StopHolding(GameObject hand)
     {
         holdingHand = null;
-        offsetFromHoldingHand = Vector3.zero;
+        doorToHandAngleOffset = 0;
 
         transform.Rotate(45, 0, 0);
     }
+
+    private float calculateDoorToHandAngle()
+    {
+        Vector3 doorToHandNormalized = (holdingHand.transform.position - door.position).normalized;
+        float tanAngle = doorToHandNormalized.x / doorToHandNormalized.z;
+        return Mathf.Atan(tanAngle) * Mathf.Rad2Deg;
+    }
+
 }
