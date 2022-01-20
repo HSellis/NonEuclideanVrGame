@@ -31,3 +31,4 @@
 20.01
 * Door rotation fixed
 * Activatable script, SignalEmitter, SignalWire, ukse lukustamine
+* Room 3 alustamine

@@ -23,7 +23,7 @@ public class PortalTeleporter : MonoBehaviour
     {
         Vector3 portalToOther = other.transform.position - transform.position;
         float dotProduct = Vector3.Dot(transform.up, portalToOther);
-        //Debug.Log("dot product: " + dotProduct);
+        Debug.Log("dot product: " + dotProduct);
 
             
         if (dotProduct > 0f)
