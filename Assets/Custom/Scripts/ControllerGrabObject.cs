@@ -48,7 +48,7 @@ public class ControllerGrabObject : MonoBehaviour
             Vector3 handToGrabbable = transform.position + grabPointOffset - grabbableInHand.transform.position;
             if (handToGrabbable.magnitude > 0.25)
             {
-                ReleaseObject();
+                //ReleaseObject();
             }
         }
     }

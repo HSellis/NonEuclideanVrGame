@@ -36,3 +36,4 @@
 24.01
 * PortalCam-ide jaoks nähtamatu layer oma portali taga, et ta ei näeks portali taga olevaid asju kaugelt vaadates
 * Key prefab
+* Room 4, Roomide 3 ja 4 ühendamine
