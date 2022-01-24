@@ -32,3 +32,6 @@
 * Door rotation fixed
 * Activatable script, SignalEmitter, SignalWire, ukse lukustamine
 * Room 3 alustamine
+
+24.01
+* PortalCam-ide jaoks nähtamatu layer oma portali taga, et ta ei näeks portali taga olevaid asju kaugelt vaadates
