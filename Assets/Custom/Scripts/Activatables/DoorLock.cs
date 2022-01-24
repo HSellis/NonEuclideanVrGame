@@ -5,18 +5,17 @@ using UnityEngine;
 public class DoorLock : Activatable
 {
     public bool isLocked = true;
-    public GameObject doorLock;
 
     public Material lockedColour;
     public Material unlockedColour;
 
-    private MeshRenderer lockMeshRenderer;
+    private MeshRenderer meshRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
-        lockMeshRenderer = doorLock.GetComponent<MeshRenderer>();
-        lockMeshRenderer.material = isLocked ? lockedColour : unlockedColour;
+        meshRenderer = GetComponent<MeshRenderer>();
+        meshRenderer.material = isLocked ? lockedColour : unlockedColour;
     }
 
     // Update is called once per frame
@@ -28,12 +27,12 @@ public class DoorLock : Activatable
     public override void Activate()
     {
         isLocked = false;
-        lockMeshRenderer.material = unlockedColour;
+        meshRenderer.material = unlockedColour;
     }
 
     public override void Deactivate()
     {
         isLocked = true;
-        lockMeshRenderer.material = lockedColour;
+        meshRenderer.material = lockedColour;
     }
 }
