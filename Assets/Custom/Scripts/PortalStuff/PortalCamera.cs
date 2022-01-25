@@ -26,7 +26,7 @@ public class PortalCamera : MonoBehaviour
     }
 
     
-    void Update()
+    void LateUpdate()
     {
 
         Vector3 eyePosRelativeToOtherRoom = otherRoom.InverseTransformPoint(duplicatedEye.position);
@@ -35,4 +35,5 @@ public class PortalCamera : MonoBehaviour
         Quaternion eyeRotationRelativeToOtherRoom = Quaternion.Inverse(otherRoom.rotation) * duplicatedEye.rotation;
         transform.rotation = thisRoom.rotation * eyeRotationRelativeToOtherRoom;
     }
+
 }
