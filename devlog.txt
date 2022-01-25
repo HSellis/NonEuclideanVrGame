@@ -40,3 +40,4 @@
 
 25.01
 * teistpidi lahti käiv Door, Room 1-s see kasutusele
+* Roomid 4, 5
