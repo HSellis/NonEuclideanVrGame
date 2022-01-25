@@ -41,3 +41,4 @@
 25.01
 * teistpidi lahti käiv Door, Room 1-s see kasutusele
 * Roomid 4, 5
+* väikeseks muutev tuba (Roomid 6, 7) ja sinna saamine Roomist 5
