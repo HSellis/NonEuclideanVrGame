@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class DoorLock : Activatable
 {
-    public bool isLocked = true;
+    public int necessarySignals;
+    public int currentSignals = 0;
 
     public Material lockedColour;
     public Material unlockedColour;
@@ -15,7 +16,7 @@ public class DoorLock : Activatable
     void Start()
     {
         meshRenderer = GetComponent<MeshRenderer>();
-        meshRenderer.material = isLocked ? lockedColour : unlockedColour;
+        meshRenderer.material = isLocked() ? lockedColour : unlockedColour;
     }
 
     // Update is called once per frame
@@ -26,13 +27,18 @@ public class DoorLock : Activatable
 
     public override void Activate()
     {
-        isLocked = false;
-        meshRenderer.material = unlockedColour;
+        currentSignals += 1;
+        meshRenderer.material = isLocked() ? lockedColour : unlockedColour;
     }
 
     public override void Deactivate()
     {
-        isLocked = true;
-        meshRenderer.material = lockedColour;
+        currentSignals -= 1;
+        meshRenderer.material = isLocked() ? lockedColour : unlockedColour;
+    }
+
+    public bool isLocked()
+    {
+        return currentSignals < necessarySignals;
     }
 }

@@ -9,6 +9,7 @@ public class DoorHandle : Grabbable
 
     public Transform door;
     public DoorLock doorLock;
+    public bool rightHanded;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +20,7 @@ public class DoorHandle : Grabbable
     // Update is called once per frame
     void Update()
     {
-        if (holdingHand && !doorLock.isLocked)
+        if (holdingHand && !doorLock.isLocked())
         {
             float doorAngle = calculateDoorToHandAngle() + doorToHandAngleOffset;
             door.rotation = Quaternion.Euler(0, doorAngle, 0);
@@ -32,7 +33,7 @@ public class DoorHandle : Grabbable
         float doorToHandAngle = calculateDoorToHandAngle();
         doorToHandAngleOffset = door.eulerAngles.y - doorToHandAngle;
 
-        transform.Rotate(-45, 0, 0);
+        transform.Rotate(rightHanded ? 45 : -45, 0, 0);
     }
 
     public override void StopHolding(GameObject hand)
@@ -40,7 +41,7 @@ public class DoorHandle : Grabbable
         holdingHand = null;
         doorToHandAngleOffset = 0;
 
-        transform.Rotate(45, 0, 0);
+        transform.Rotate(rightHanded ? -45 : 45, 0, 0);
     }
 
     private float calculateDoorToHandAngle()
