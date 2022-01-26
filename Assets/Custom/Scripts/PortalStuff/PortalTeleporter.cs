@@ -34,7 +34,25 @@ public class PortalTeleporter : MonoBehaviour
                 playArea.localPosition = new Vector3(0, 0, 0);
                 playArea.localRotation = Quaternion.Euler(0, 0, 0);
                 
-            } 
+            }
+            else if (other.tag == "FreelyMovable")
+            {
+                Transform collidingTrans = other.transform;
+                Rigidbody collidingRigidBody = other.GetComponent<Rigidbody>();
+                Vector3 objectVelocity = collidingRigidBody.velocity;
+                Vector3 objectAngularVelocity = collidingRigidBody.angularVelocity;
+                
+                Vector3 objectPosRelativeToThisRoom = playArea.InverseTransformPoint(collidingTrans.position);
+                collidingTrans.position = destinationRoom.TransformPoint(objectPosRelativeToThisRoom);
+
+                Quaternion objectRotationRelativeToThisRoom = Quaternion.Inverse(playArea.rotation) * collidingTrans.rotation;
+                collidingTrans.rotation = destinationRoom.rotation * objectRotationRelativeToThisRoom;
+
+                Vector3 objectVelocityRelativeToThisRoom = playArea.InverseTransformVector(objectVelocity);
+                collidingRigidBody.velocity = destinationRoom.TransformVector(objectVelocityRelativeToThisRoom);
+
+                collidingRigidBody.angularVelocity = objectAngularVelocity;
+            }
 
         }
     }

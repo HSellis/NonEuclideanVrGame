@@ -42,3 +42,7 @@
 * teistpidi lahti käiv Door, Room 1-s see kasutusele
 * Roomid 4, 5
 * väikeseks muutev tuba (Roomid 6, 7) ja sinna saamine Roomist 5
+
+26.01
+* objektide teleportimine läbi portalite
+* dubleeriva toa skriptid
