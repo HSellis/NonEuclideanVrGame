@@ -33,10 +33,13 @@ public class PortalTeleporter : MonoBehaviour
                 playArea.parent = destinationRoom;
                 playArea.localPosition = new Vector3(0, 0, 0);
                 playArea.localRotation = Quaternion.Euler(0, 0, 0);
+
+                TeleportEvents.PlayerEnteredRoom(destinationRoom.gameObject.name);
                 
             }
             else if (other.tag == "FreelyMovable")
             {
+                Debug.Log("Teleporting object " + other.gameObject.name);
                 Transform collidingTrans = other.transform;
                 Rigidbody collidingRigidBody = other.GetComponent<Rigidbody>();
                 Vector3 objectVelocity = collidingRigidBody.velocity;
@@ -52,6 +55,8 @@ public class PortalTeleporter : MonoBehaviour
                 collidingRigidBody.velocity = destinationRoom.TransformVector(objectVelocityRelativeToThisRoom);
 
                 collidingRigidBody.angularVelocity = objectAngularVelocity;
+
+                TeleportEvents.ObjectEnteredRoom(other.gameObject, destinationRoom.gameObject.name);
             }
 
         }

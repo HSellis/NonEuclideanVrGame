@@ -46,3 +46,5 @@
 26.01
 * objektide teleportimine läbi portalite
 * dubleeriva toa skriptid
+* Events system
+* Portalite aktiveerimine olenevalt playeri Roomist
