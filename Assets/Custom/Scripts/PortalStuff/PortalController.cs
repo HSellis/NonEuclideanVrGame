@@ -25,17 +25,11 @@ public class PortalController : MonoBehaviour
 
     private void OnPlayerEnteredRoom(string roomName)
     {
-        if (activeRooms.Contains(roomName)) {
-            foreach (Transform child in transform)
-            {
-                child.gameObject.SetActive(true);
-            }
-        }
-        else
+        bool activity = activeRooms.Contains(roomName);
+        foreach (Transform child in transform)
         {
-            foreach (Transform child in transform)
-            {
-                child.gameObject.SetActive(false);
+            if (child.gameObject.name.StartsWith("Camera")) {
+                child.gameObject.SetActive(activity);
             }
         }
     }

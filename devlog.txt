@@ -51,3 +51,4 @@
 
 27.01
 * dubleeriva toa skriptid fix
+* portalite aktiveerimise optimeerimine

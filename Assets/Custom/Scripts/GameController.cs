@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    public string startRoom;
+
     // Start is called before the first frame update
     void Start()
     {
-        TeleportEvents.PlayerEnteredRoom("Room6");
+        TeleportEvents.PlayerEnteredRoom(startRoom);
     }
 
     // Update is called once per frame
