@@ -12,12 +12,9 @@ public class Duplicater : MonoBehaviour
     public Duplicater duplicate;
     public bool isSource;
 
-    private Vector3 duplicatePrevPos;
-
     // Start is called before the first frame update
     void Start()
     {
-        duplicatePrevPos = duplicate.transform.position;
         TeleportEvents.OnPlayerEnteredRoom += OnPlayerEnteredRoom;
         TeleportEvents.OnObjectEnteredRoom += OnObjectEnteredRoom;
     }
@@ -33,7 +30,7 @@ public class Duplicater : MonoBehaviour
     {
         if (!isSource)
         {
-            if ((duplicate.transform.position - duplicatePrevPos).sqrMagnitude > 5) return;
+            if ((duplicate.transform.position - duplicate.thisRoom.position).sqrMagnitude > 100) return; // duplicate was teleported
 
             Vector3 duplicatePosRelativeToOtherRoom = otherRoom.InverseTransformPoint(duplicate.transform.position);
             
@@ -42,7 +39,6 @@ public class Duplicater : MonoBehaviour
             Quaternion duplicateRotationRelativeToOtherRoom = Quaternion.Inverse(otherRoom.rotation) * duplicate.transform.rotation;
             transform.rotation = thisRoom.rotation * duplicateRotationRelativeToOtherRoom;
 
-            duplicatePrevPos = duplicate.transform.position;
         }
     }
 
@@ -60,6 +56,7 @@ public class Duplicater : MonoBehaviour
 
     private void OnObjectEnteredRoom(GameObject obj, string roomName)
     {
+        /*
         if (obj == gameObject  && roomName + "Static" == otherRoom.gameObject.name)
         {
             // I was tp-d to other room
@@ -69,33 +66,44 @@ public class Duplicater : MonoBehaviour
             thisRoom = otherRoom;
             otherRoom = temp;
 
-            isSource = !isSource;
+            SetSource(!isSource);
 
         }
+        */
 
-        else if (obj == duplicate.gameObject && roomName + "Static" == thisRoom.gameObject.name)
+        if (obj == duplicate.gameObject && roomName + "Static" == thisRoom.gameObject.name)
         {
             // My duplicate was tp-d to my room
             Debug.Log("My duplicate was tp-d to my room");
 
             isSource = !isSource;
+            duplicate.isSource = !duplicate.isSource;
 
-            Transform temp = thisRoom;
-            thisRoom = otherRoom;
-            otherRoom = temp;
+            //Transform temp = thisRoom;
+            //thisRoom = otherRoom;
+            //otherRoom = temp;
+            thisRoom = duplicate.thisRoom;
+            otherRoom = duplicate.otherRoom;
+            duplicate.thisRoom = otherRoom;
+            duplicate.otherRoom = thisRoom;
+
+
 
             if (roomName == bigRoomName)
             {
                 // Going to small room
+                Debug.Log("Going to small room");
                 transform.localScale /= 9;
             }
             else if (roomName == smallRoomName)
             {
                 // Going to big room
+                Debug.Log("Going to big room");
                 transform.localScale *= 9;
             }
         }
 
     }
+
 
 }

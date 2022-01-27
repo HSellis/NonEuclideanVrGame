@@ -39,6 +39,12 @@ public class PortalTeleporter : MonoBehaviour
             }
             else if (other.tag == "FreelyMovable")
             {
+                Duplicater dupl = other.GetComponent<Duplicater>();
+                if (dupl)
+                {
+                    if (!dupl.isSource) return;
+                }
+                    
                 Debug.Log("Teleporting object " + other.gameObject.name);
                 Transform collidingTrans = other.transform;
                 Rigidbody collidingRigidBody = other.GetComponent<Rigidbody>();

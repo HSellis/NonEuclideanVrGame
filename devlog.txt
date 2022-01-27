@@ -48,3 +48,6 @@
 * dubleeriva toa skriptid
 * Events system
 * Portalite aktiveerimine olenevalt playeri Roomist
+
+27.01
+* dubleeriva toa skriptid fix
