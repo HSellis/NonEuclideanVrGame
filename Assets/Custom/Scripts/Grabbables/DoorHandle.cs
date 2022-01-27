@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DoorHandle : Grabbable
 {
-    private GameObject holdingHand;
     private float doorToHandAngleOffset;
 
     public Transform door;
@@ -27,7 +26,7 @@ public class DoorHandle : Grabbable
         }
     }
 
-    public override void StartHolding(GameObject hand)
+    public override void StartHolding(ControllerGrabObject hand)
     {
         holdingHand = hand;
         float doorToHandAngle = calculateDoorToHandAngle();
@@ -36,7 +35,7 @@ public class DoorHandle : Grabbable
         transform.Rotate(rightHanded ? 45 : -45, 0, 0);
     }
 
-    public override void StopHolding(GameObject hand)
+    public override void StopHolding(ControllerGrabObject hand)
     {
         holdingHand = null;
         doorToHandAngleOffset = 0;

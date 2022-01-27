@@ -33,7 +33,6 @@ public class Duplicater : MonoBehaviour
             if ((duplicate.transform.position - duplicate.thisRoom.position).sqrMagnitude > 100) return; // duplicate was teleported
 
             Vector3 duplicatePosRelativeToOtherRoom = otherRoom.InverseTransformPoint(duplicate.transform.position);
-            
             transform.position = thisRoom.TransformPoint(duplicatePosRelativeToOtherRoom);
 
             Quaternion duplicateRotationRelativeToOtherRoom = Quaternion.Inverse(otherRoom.rotation) * duplicate.transform.rotation;

@@ -52,3 +52,7 @@
 27.01
 * dubleeriva toa skriptid fix
 * portalite aktiveerimise optimeerimine
+* tundub, et portalite renderdamise viga on custom shaderis
+!!! shader äkki ei arvesta sellega, et kaamera võib keerata mitte ainult vasakule-paremale ja üles-alla, vaid ka kolmandas mõõtmes (pea kallutamine ühele-teisele poole) !!!
+https://forum.unity.com/threads/what-does-the-function-computescreenpos-in-unitycg-cginc-do.294470/
+* portal ei telepordi nüüd objekte, kui nad on parasjagu käes

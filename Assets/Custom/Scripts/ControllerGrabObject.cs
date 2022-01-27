@@ -12,6 +12,7 @@ public class ControllerGrabObject : MonoBehaviour
     private Grabbable collidingGrabbable;
     private Grabbable grabbableInHand;
     private Vector3 grabPointOffset;
+    //private Vector3 handGrabbablePrevPos;
 
 
     private void SetCollidingObject(Collider col)
@@ -46,11 +47,18 @@ public class ControllerGrabObject : MonoBehaviour
         if (grabbableInHand)
         {
             Vector3 handToGrabbable = transform.position + grabPointOffset - grabbableInHand.transform.position;
-            if (handToGrabbable.magnitude > 0.25)
+            //Vector3 grabbableToPrevPos = handGrabbablePrevPos - grabbableInHand.transform.position;
+            
+            if (handToGrabbable.magnitude > 0.25) // && grabbableToPrevPos.magnitude < 2
             {
-                //ReleaseObject();
+                ReleaseObject();
             }
         }
+    }
+
+    private void LateUpdate()
+    {
+        //if (grabbableInHand) handGrabbablePrevPos = grabbableInHand.transform.position;
     }
 
     public void OnTriggerEnter(Collider other)
@@ -79,8 +87,9 @@ public class ControllerGrabObject : MonoBehaviour
         grabbableInHand = collidingGrabbable;
         collidingGrabbable = null;
         grabPointOffset = grabbableInHand.transform.position - transform.position;
+        //handGrabbablePrevPos = grabbableInHand.transform.position;
 
-        grabbableInHand.StartHolding(gameObject);
+        grabbableInHand.StartHolding(this);
         if (grabbableInHand.freelyMovable)
         {
             var joint = AddFixedJoint();
@@ -98,7 +107,7 @@ public class ControllerGrabObject : MonoBehaviour
 
     private void ReleaseObject()
     {
-        grabbableInHand.StopHolding(gameObject);
+        grabbableInHand.StopHolding(this);
 
         if (GetComponent<FixedJoint>())
         {
@@ -110,5 +119,6 @@ public class ControllerGrabObject : MonoBehaviour
         }
         grabbableInHand = null;
         grabPointOffset = Vector3.zero;
+        //handGrabbablePrevPos = Vector3.zero;
     }
 }

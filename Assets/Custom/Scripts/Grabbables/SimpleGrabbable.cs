@@ -16,14 +16,14 @@ public class SimpleGrabbable : Grabbable
         
     }
 
-    public override void StartHolding(GameObject hand)
+    public override void StartHolding(ControllerGrabObject hand)
     {
-        
+        holdingHand = hand;
     }
 
-    public override void StopHolding(GameObject hand)
+    public override void StopHolding(ControllerGrabObject hand)
     {
-        
+        holdingHand = null;
     }
 
 }

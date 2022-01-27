@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Grabbable : MonoBehaviour
 {
     public bool freelyMovable;
+    public ControllerGrabObject holdingHand;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +19,7 @@ public abstract class Grabbable : MonoBehaviour
         
     }
 
-    public abstract void StartHolding(GameObject hand);
+    public abstract void StartHolding(ControllerGrabObject hand);
 
-    public abstract void StopHolding(GameObject hand);
+    public abstract void StopHolding(ControllerGrabObject hand);
 }

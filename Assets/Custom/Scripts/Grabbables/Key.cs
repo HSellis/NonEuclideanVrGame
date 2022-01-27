@@ -22,12 +22,12 @@ public class Key : Grabbable
         }
     }
 
-    public override void StartHolding(GameObject hand)
+    public override void StartHolding(ControllerGrabObject hand)
     {
         
     }
 
-    public override void StopHolding(GameObject hand)
+    public override void StopHolding(ControllerGrabObject hand)
     {
         
     }

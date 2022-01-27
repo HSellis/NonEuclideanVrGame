@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PortalController : MonoBehaviour
 {
-    public List<string> activeRooms;
+    public List<string> activeRooms; // rooms where this portal's cameras should actively render
 
     // Start is called before the first frame update
     void Awake()
