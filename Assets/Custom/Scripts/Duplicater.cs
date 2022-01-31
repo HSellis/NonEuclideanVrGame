@@ -12,11 +12,17 @@ public class Duplicater : MonoBehaviour
     public Duplicater duplicate;
     public bool isSource;
 
+    private Rigidbody rigidBody;
+    private Rigidbody duplicateRigidBody;
+
     // Start is called before the first frame update
     void Start()
     {
         TeleportEvents.OnPlayerEnteredRoom += OnPlayerEnteredRoom;
         TeleportEvents.OnObjectEnteredRoom += OnObjectEnteredRoom;
+
+        rigidBody = GetComponent<Rigidbody>();
+        duplicateRigidBody = duplicate.GetComponent<Rigidbody>();
     }
 
     private void OnDestroy()
@@ -32,13 +38,30 @@ public class Duplicater : MonoBehaviour
         {
             if ((duplicate.transform.position - duplicate.thisRoom.position).sqrMagnitude > 100) return; // duplicate was teleported
 
-            Vector3 duplicatePosRelativeToOtherRoom = otherRoom.InverseTransformPoint(duplicate.transform.position);
-            transform.position = thisRoom.TransformPoint(duplicatePosRelativeToOtherRoom);
-
-            Quaternion duplicateRotationRelativeToOtherRoom = Quaternion.Inverse(otherRoom.rotation) * duplicate.transform.rotation;
-            transform.rotation = thisRoom.rotation * duplicateRotationRelativeToOtherRoom;
+            transform.position = transformPosBetweenRooms(otherRoom, thisRoom, duplicate.transform.position);
+            transform.rotation = transformRotationBetweenRooms(otherRoom, thisRoom, duplicate.transform.rotation);
+            rigidBody.velocity = transformVectorBetweenRooms(otherRoom, thisRoom, duplicateRigidBody.velocity);
+            rigidBody.angularVelocity = duplicateRigidBody.angularVelocity;
 
         }
+    }
+
+    private Vector3 transformPosBetweenRooms(Transform fromRoom, Transform toRoom, Vector3 pos)
+    {
+        Vector3 posInFromRoom = fromRoom.InverseTransformPoint(pos);
+        return toRoom.TransformPoint(posInFromRoom);
+    }
+
+    private Quaternion transformRotationBetweenRooms(Transform fromRoom, Transform toRoom, Quaternion rotation)
+    {
+        Quaternion rotationInFromRoom = Quaternion.Inverse(fromRoom.rotation) * rotation;
+        return toRoom.rotation * rotationInFromRoom;
+    }
+
+    private Vector3 transformVectorBetweenRooms(Transform fromRoom, Transform toRoom, Vector3 vector)
+    {
+        Vector3 vectorInFromRoom = fromRoom.InverseTransformVector(vector);
+        return toRoom.TransformVector(vectorInFromRoom);
     }
 
 
@@ -73,31 +96,33 @@ public class Duplicater : MonoBehaviour
         if (obj == duplicate.gameObject && roomName + "Static" == thisRoom.gameObject.name)
         {
             // My duplicate was tp-d to my room
-            Debug.Log("My duplicate was tp-d to my room");
 
-            isSource = !isSource;
-            duplicate.isSource = !duplicate.isSource;
+            // Teleport myself to other room
+            transform.position = transformPosBetweenRooms(thisRoom, otherRoom, duplicate.transform.position);
+            transform.rotation = transformRotationBetweenRooms(thisRoom, otherRoom, duplicate.transform.rotation);
+            rigidBody.velocity = transformVectorBetweenRooms(thisRoom, otherRoom, duplicateRigidBody.velocity);
+            rigidBody.angularVelocity = duplicateRigidBody.angularVelocity;
 
-            //Transform temp = thisRoom;
-            //thisRoom = otherRoom;
-            //otherRoom = temp;
+
+            // Switch rooms
             thisRoom = duplicate.thisRoom;
             otherRoom = duplicate.otherRoom;
             duplicate.thisRoom = otherRoom;
             duplicate.otherRoom = thisRoom;
 
+            // I am now source, not my duplicate
+            isSource = true;
+            duplicate.isSource = false;
 
 
             if (roomName == bigRoomName)
             {
                 // Going to small room
-                Debug.Log("Going to small room");
                 transform.localScale /= 9;
             }
             else if (roomName == smallRoomName)
             {
                 // Going to big room
-                Debug.Log("Going to big room");
                 transform.localScale *= 9;
             }
         }

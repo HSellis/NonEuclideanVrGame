@@ -72,6 +72,7 @@ public class PortalTeleporter : MonoBehaviour
             collidingRigidBody.angularVelocity = objectAngularVelocity;
 
             TeleportEvents.ObjectEnteredRoom(other.gameObject, destinationRoom.gameObject.name);
+            
         }
 
         
