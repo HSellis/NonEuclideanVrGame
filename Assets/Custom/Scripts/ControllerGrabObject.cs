@@ -46,8 +46,8 @@ public class ControllerGrabObject : MonoBehaviour
 
         if (grabbableInHand)
         {
-            Vector3 handPosRelativeToGrabbable = grabbableInHand.transform.InverseTransformPoint(transform.position);
-            Vector3 handOffsetFromGrabPoint = handPosRelativeToGrabbable - grabPointRelativeToGrabbable;
+            Vector3 grabPointInWorldSpace = grabbableInHand.transform.TransformPoint(grabPointRelativeToGrabbable);
+            Vector3 handOffsetFromGrabPoint = transform.position - grabPointInWorldSpace;
             //Vector3 grabbableToPrevPos = handGrabbablePrevPos - grabbableInHand.transform.position;
 
             if (handOffsetFromGrabPoint.magnitude > 0.15) // && grabbableToPrevPos.magnitude < 2
@@ -114,7 +114,10 @@ public class ControllerGrabObject : MonoBehaviour
         {
             GetComponent<FixedJoint>().connectedBody = null;
             Destroy(GetComponent<FixedJoint>());
-            grabbableInHand.GetComponent<Rigidbody>().velocity = controllerPose.GetVelocity();
+
+            Transform currentRoom = transform.parent.parent;
+            Vector3 controllerVelocityInCurrentRoom = currentRoom.TransformVector(controllerPose.GetVelocity());
+            grabbableInHand.GetComponent<Rigidbody>().velocity = controllerVelocityInCurrentRoom;
             grabbableInHand.GetComponent<Rigidbody>().angularVelocity = controllerPose.GetAngularVelocity();
 
         }
