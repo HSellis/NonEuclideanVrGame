@@ -61,3 +61,6 @@ https://forum.unity.com/threads/what-does-the-function-computescreenpos-in-unity
 * dubleeriva toa skriptid lõpuks töötavad täielikult
 * dubleeriva toa kujundus
 * käega krabatav PortalStick ja uus ruum, kus see on
+
+01.02
+* PortalSticki asemel PortalBox
