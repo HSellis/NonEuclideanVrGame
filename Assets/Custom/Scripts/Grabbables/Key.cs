@@ -24,11 +24,11 @@ public class Key : Grabbable
 
     public override void StartHolding(ControllerGrabObject hand)
     {
-        
+        holdingHand = hand;
     }
 
     public override void StopHolding(ControllerGrabObject hand)
     {
-        
+        holdingHand = null;
     }
 }

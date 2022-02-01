@@ -66,3 +66,4 @@ https://forum.unity.com/threads/what-does-the-function-computescreenpos-in-unity
 * PortalSticki asemel PortalBox
 * Grabbable kaugus käest arvutamine relatiivselt Grabbable'ile
 * Grabbable'i lahti laskmisel võttis controlleri absolute velocity, nüüd võtab relatiivselt praeguse ruumi sees (pööratud ruumis oli enne vigane)
+* uus ruumikomplekt PortalRotatoriga

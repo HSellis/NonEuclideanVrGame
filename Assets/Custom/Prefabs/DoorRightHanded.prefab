@@ -221,6 +221,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4607664437368589595}
+  - component: {fileID: 724803690627601316}
   m_Layer: 0
   m_Name: DoorRightHanded
   m_TagString: Untagged
@@ -245,6 +246,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &724803690627601316
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4607664437368589592}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4607664438391638936
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,5 +520,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   freelyMovable: 0
+  holdingHand: {fileID: 0}
   door: {fileID: 4607664437368589595}
   doorLock: {fileID: 0}
+  rightHanded: 0

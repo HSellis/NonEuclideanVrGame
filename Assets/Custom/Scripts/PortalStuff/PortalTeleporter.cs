@@ -42,36 +42,43 @@ public class PortalTeleporter : MonoBehaviour
         }
         else if (other.tag == "FreelyMovable")
         {
-            Duplicater dupl = other.GetComponent<Duplicater>();
-            if (dupl)
+            Vector3 portalToOther = other.transform.position - transform.position;
+            float dotProduct = Vector3.Dot(transform.up, portalToOther);
+
+            if (dotProduct > 0f)
             {
-                if (!dupl.isSource) return;
-            }
-            Grabbable grabbable = other.GetComponent<Grabbable>();
-            if (grabbable)
-            {
-                if (grabbable.holdingHand) return;
+                Duplicater dupl = other.GetComponent<Duplicater>();
+                if (dupl)
+                {
+                    if (!dupl.isSource) return;
+                }
+                Grabbable grabbable = other.GetComponent<Grabbable>();
+                if (grabbable)
+                {
+                    if (grabbable.holdingHand) return;
+                }
+
+                Debug.Log("Teleporting object " + other.gameObject.name);
+                Transform collidingTrans = other.transform;
+                Rigidbody collidingRigidBody = other.GetComponent<Rigidbody>();
+
+                Vector3 objectVelocity = collidingRigidBody.velocity;
+                Vector3 objectAngularVelocity = collidingRigidBody.angularVelocity;
+
+                Vector3 objectPosRelativeToThisRoom = playArea.InverseTransformPoint(collidingTrans.position);
+                collidingTrans.position = destinationRoom.TransformPoint(objectPosRelativeToThisRoom);
+
+                Quaternion objectRotationRelativeToThisRoom = Quaternion.Inverse(playArea.rotation) * collidingTrans.rotation;
+                collidingTrans.rotation = destinationRoom.rotation * objectRotationRelativeToThisRoom;
+
+                Vector3 objectVelocityRelativeToThisRoom = playArea.InverseTransformVector(objectVelocity);
+                collidingRigidBody.velocity = destinationRoom.TransformVector(objectVelocityRelativeToThisRoom);
+
+                collidingRigidBody.angularVelocity = objectAngularVelocity;
+
+                TeleportEvents.ObjectEnteredRoom(other.gameObject, destinationRoom.gameObject.name);
             }
             
-            Debug.Log("Teleporting object " + other.gameObject.name);
-            Transform collidingTrans = other.transform;
-            Rigidbody collidingRigidBody = other.GetComponent<Rigidbody>();
-
-            Vector3 objectVelocity = collidingRigidBody.velocity;
-            Vector3 objectAngularVelocity = collidingRigidBody.angularVelocity;
-                
-            Vector3 objectPosRelativeToThisRoom = playArea.InverseTransformPoint(collidingTrans.position);
-            collidingTrans.position = destinationRoom.TransformPoint(objectPosRelativeToThisRoom);
-
-            Quaternion objectRotationRelativeToThisRoom = Quaternion.Inverse(playArea.rotation) * collidingTrans.rotation;
-            collidingTrans.rotation = destinationRoom.rotation * objectRotationRelativeToThisRoom;
-
-            Vector3 objectVelocityRelativeToThisRoom = playArea.InverseTransformVector(objectVelocity);
-            collidingRigidBody.velocity = destinationRoom.TransformVector(objectVelocityRelativeToThisRoom);
-
-            collidingRigidBody.angularVelocity = objectAngularVelocity;
-
-            TeleportEvents.ObjectEnteredRoom(other.gameObject, destinationRoom.gameObject.name);
             
         }
 

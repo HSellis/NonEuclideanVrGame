@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class DoorHandle : Grabbable
 {
-    private float doorToHandAngleOffset;
-
     public Transform door;
     public DoorLock doorLock;
     public bool rightHanded;
+
+    private float doorToHandAngleOffset;
 
     // Start is called before the first frame update
     void Start()
