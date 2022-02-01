@@ -64,3 +64,4 @@ https://forum.unity.com/threads/what-does-the-function-computescreenpos-in-unity
 
 01.02
 * PortalSticki asemel PortalBox
+* Grabbable kaugus käest arvutamine relatiivselt Grabbable'ile

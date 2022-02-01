@@ -11,7 +11,7 @@ public class ControllerGrabObject : MonoBehaviour
 
     private Grabbable collidingGrabbable;
     private Grabbable grabbableInHand;
-    private Vector3 grabPointOffset;
+    private Vector3 grabPointRelativeToGrabbable;
     //private Vector3 handGrabbablePrevPos;
 
 
@@ -46,10 +46,11 @@ public class ControllerGrabObject : MonoBehaviour
 
         if (grabbableInHand)
         {
-            Vector3 handToGrabbable = transform.position + grabPointOffset - grabbableInHand.transform.position;
+            Vector3 handPosRelativeToGrabbable = grabbableInHand.transform.InverseTransformPoint(transform.position);
+            Vector3 handOffsetFromGrabPoint = handPosRelativeToGrabbable - grabPointRelativeToGrabbable;
             //Vector3 grabbableToPrevPos = handGrabbablePrevPos - grabbableInHand.transform.position;
-            
-            if (handToGrabbable.magnitude > 0.25) // && grabbableToPrevPos.magnitude < 2
+
+            if (handOffsetFromGrabPoint.magnitude > 0.15) // && grabbableToPrevPos.magnitude < 2
             {
                 ReleaseObject();
             }
@@ -86,7 +87,7 @@ public class ControllerGrabObject : MonoBehaviour
     {
         grabbableInHand = collidingGrabbable;
         collidingGrabbable = null;
-        grabPointOffset = grabbableInHand.transform.position - transform.position;
+        grabPointRelativeToGrabbable = grabbableInHand.transform.InverseTransformPoint(transform.position);
         //handGrabbablePrevPos = grabbableInHand.transform.position;
 
         grabbableInHand.StartHolding(this);
@@ -118,7 +119,7 @@ public class ControllerGrabObject : MonoBehaviour
 
         }
         grabbableInHand = null;
-        grabPointOffset = Vector3.zero;
+        grabPointRelativeToGrabbable = Vector3.zero;
         //handGrabbablePrevPos = Vector3.zero;
     }
 }

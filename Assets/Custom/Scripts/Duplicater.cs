@@ -70,9 +70,11 @@ public class Duplicater : MonoBehaviour
         if (roomName + "Static" == thisRoom.gameObject.name)
         {
             isSource = true;
+            rigidBody.isKinematic = false;
         } else
         {
             isSource = false;
+            rigidBody.isKinematic = true;
         }
     }
 
@@ -112,7 +114,9 @@ public class Duplicater : MonoBehaviour
 
             // I am now source, not my duplicate
             isSource = true;
+            rigidBody.isKinematic = false;
             duplicate.isSource = false;
+            duplicateRigidBody.isKinematic = true;
 
 
             if (roomName == bigRoomName)
