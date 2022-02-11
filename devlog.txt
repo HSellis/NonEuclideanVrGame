@@ -74,3 +74,6 @@ https://forum.unity.com/threads/what-does-the-function-computescreenpos-in-unity
 08.02
 * headseti resolutioni, FoV dünaamiliselt kätte saamine
 * input bindingud Oculus Questi jaoks
+
+11.02
+* 720 kraadise toa uuendamine
