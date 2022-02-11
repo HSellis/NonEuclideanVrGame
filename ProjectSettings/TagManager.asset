@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - FreelyMovable
+  - PortalCamera
   layers:
   - Default
   - TransparentFX

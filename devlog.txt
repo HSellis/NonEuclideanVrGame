@@ -77,3 +77,4 @@ https://forum.unity.com/threads/what-does-the-function-computescreenpos-in-unity
 
 11.02
 * 720 kraadise toa uuendamine
+* objektid, millega saab portal camerate field of viewd ja aspect ratiot dünaamiliselt muuta
