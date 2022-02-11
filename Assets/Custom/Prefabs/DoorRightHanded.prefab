@@ -258,7 +258,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -522,5 +522,5 @@ MonoBehaviour:
   freelyMovable: 0
   holdingHand: {fileID: 0}
   door: {fileID: 4607664437368589595}
-  doorLock: {fileID: 0}
-  rightHanded: 0
+  doorLock: {fileID: 2521383620758860874}
+  rightHanded: 1

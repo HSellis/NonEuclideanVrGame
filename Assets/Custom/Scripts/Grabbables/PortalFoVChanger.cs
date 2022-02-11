@@ -25,20 +25,22 @@ public class PortalFoVChanger : Grabbable
     {
         if (Time.time >= timerTick && holdingHand)
         {
+            int i = 0;
             foreach (Camera portalCam in portalCameras)
             {
                 if (aspectRatio)
                 {
 
                     portalCam.aspect += 0.025f * multiplier;
-                    Debug.Log("aspect ratio: " + portalCam.aspect);
+                    if (i == 0) Debug.Log("aspect ratio: " + portalCam.aspect);
                 }
                 else
                 {
                     portalCam.fieldOfView += 1 * multiplier;
-                    Debug.Log("Field of view: " + portalCam.fieldOfView);
+                    if (i == 0) Debug.Log("Field of view: " + portalCam.fieldOfView);
                 }
-        }
+                i++;
+            }
             timerTick = Time.time + 1;
         }
     }
