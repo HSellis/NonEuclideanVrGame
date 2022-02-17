@@ -7,15 +7,19 @@ public class PortalRotator : Grabbable
     public Transform otherRoom;
     public Transform rotatingPart;
 
+    private Rigidbody rb;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        rb.velocity = (holdingHand.transform.position - transform.position) * 3;
+
         Vector3 rotatorEulerAngles = rotatingPart.rotation.eulerAngles;
         otherRoom.rotation = Quaternion.Euler(rotatorEulerAngles.x, -rotatorEulerAngles.y, rotatorEulerAngles.z);
     }
