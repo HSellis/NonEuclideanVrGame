@@ -5,9 +5,7 @@ using UnityEngine;
 public class PortalRotator : Grabbable
 {
     public Transform otherRoom;
-
-    private float centerToHandAngleOffset;
-    private float otherRoomAngleOffset;
+    public Transform rotatingPart;
 
     // Start is called before the first frame update
     void Start()
@@ -18,33 +16,18 @@ public class PortalRotator : Grabbable
     // Update is called once per frame
     void Update()
     {
-        if (holdingHand)
-        {
-            float angle = calculateCenterToHandAngle() + centerToHandAngleOffset;
-            transform.rotation = Quaternion.Euler(0, angle, 0);
-            otherRoom.rotation = Quaternion.Euler(0, -angle, 0);
-        }
+        Vector3 rotatorEulerAngles = rotatingPart.rotation.eulerAngles;
+        otherRoom.rotation = Quaternion.Euler(rotatorEulerAngles.x, -rotatorEulerAngles.y, rotatorEulerAngles.z);
     }
 
     public override void StartHolding(ControllerGrabObject hand)
     {
         holdingHand = hand;
-        float centerToHandAngle = calculateCenterToHandAngle();
-        centerToHandAngleOffset = transform.eulerAngles.y - centerToHandAngle;
-        otherRoomAngleOffset = transform.eulerAngles.y - otherRoom.eulerAngles.y;
     }
 
     public override void StopHolding(ControllerGrabObject hand)
     {
         holdingHand = null;
-        centerToHandAngleOffset = 0;
-        otherRoomAngleOffset = 0;
     }
 
-    private float calculateCenterToHandAngle()
-    {
-        Vector3 centerToHandNormalized = (holdingHand.transform.position - transform.position).normalized;
-        float tanAngle = centerToHandNormalized.x / centerToHandNormalized.z;
-        return Mathf.Atan(tanAngle) * Mathf.Rad2Deg;
-    }
 }

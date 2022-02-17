@@ -84,3 +84,4 @@ https://forum.unity.com/threads/what-does-the-function-computescreenpos-in-unity
 
 17.02
 * uksed töötavad nüüd HingeJointidel
+* PortalRotator ka

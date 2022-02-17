@@ -41772,6 +41772,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1805579520}
     m_Modifications:
+    - target: {fileID: 153511714308161154, guid: a347cb740beef624e8a4cfb86dc792c7, type: 3}
+      propertyPath: rotator
+      value: 
+      objectReference: {fileID: 1252281510}
+    - target: {fileID: 153511714308161154, guid: a347cb740beef624e8a4cfb86dc792c7, type: 3}
+      propertyPath: otherRoom
+      value: 
+      objectReference: {fileID: 204575243}
     - target: {fileID: 1745647558168087040, guid: a347cb740beef624e8a4cfb86dc792c7, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -43996,6 +44004,11 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!4 &1343753909 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7417766530089085508, guid: a347cb740beef624e8a4cfb86dc792c7, type: 3}
+  m_PrefabInstance: {fileID: 4542772363594732263}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1354131403
 GameObject:
   m_ObjectHideFlags: 0
@@ -67859,6 +67872,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1805579520}
     m_Modifications:
+    - target: {fileID: 153511714308161154, guid: a347cb740beef624e8a4cfb86dc792c7, type: 3}
+      propertyPath: rotator
+      value: 
+      objectReference: {fileID: 1271402301}
+    - target: {fileID: 153511714308161154, guid: a347cb740beef624e8a4cfb86dc792c7, type: 3}
+      propertyPath: otherRoom
+      value: 
+      objectReference: {fileID: 856345577}
+    - target: {fileID: 153511714308161154, guid: a347cb740beef624e8a4cfb86dc792c7, type: 3}
+      propertyPath: rotatingPart
+      value: 
+      objectReference: {fileID: 1343753909}
+    - target: {fileID: 1139872282878902889, guid: a347cb740beef624e8a4cfb86dc792c7, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 1.27
+      objectReference: {fileID: 0}
     - target: {fileID: 1745647558168087040, guid: a347cb740beef624e8a4cfb86dc792c7, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
