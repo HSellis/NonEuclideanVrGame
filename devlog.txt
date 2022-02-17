@@ -81,3 +81,6 @@ https://forum.unity.com/threads/what-does-the-function-computescreenpos-in-unity
 
 15.02
 * ruumide ümbertõstmine, paremini ühendamine
+
+17.02
+* uksed töötavad nüüd HingeJointidel

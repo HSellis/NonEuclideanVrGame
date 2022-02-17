@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class DoorHandle : Grabbable
 {
-    public Transform door;
     public DoorLock doorLock;
     public bool rightHanded;
 
-    private float doorToHandAngleOffset;
+    private Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -21,16 +20,13 @@ public class DoorHandle : Grabbable
     {
         if (holdingHand && !doorLock.isLocked())
         {
-            float doorAngle = calculateDoorToHandAngle() + doorToHandAngleOffset;
-            door.rotation = Quaternion.Euler(0, doorAngle, 0);
+            rb.velocity = (holdingHand.transform.position - transform.position) * 3;
         }
     }
 
     public override void StartHolding(ControllerGrabObject hand)
     {
         holdingHand = hand;
-        float doorToHandAngle = calculateDoorToHandAngle();
-        doorToHandAngleOffset = door.eulerAngles.y - doorToHandAngle;
 
         transform.Rotate(rightHanded ? 45 : -45, 0, 0);
     }
@@ -38,16 +34,8 @@ public class DoorHandle : Grabbable
     public override void StopHolding(ControllerGrabObject hand)
     {
         holdingHand = null;
-        doorToHandAngleOffset = 0;
 
         transform.Rotate(rightHanded ? -45 : 45, 0, 0);
-    }
-
-    private float calculateDoorToHandAngle()
-    {
-        Vector3 doorToHandNormalized = (holdingHand.transform.position - door.position).normalized;
-        float tanAngle = doorToHandNormalized.x / doorToHandNormalized.z;
-        return Mathf.Atan(tanAngle) * Mathf.Rad2Deg;
     }
 
 }
