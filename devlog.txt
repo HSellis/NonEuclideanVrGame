@@ -90,3 +90,4 @@ https://forum.unity.com/threads/what-does-the-function-computescreenpos-in-unity
 18.02
 * reworked uste täiustamine
 * erinevate portalite public variableide õigeks panemine
+* pööratava ruumi edasiarendus
