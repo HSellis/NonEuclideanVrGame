@@ -20,7 +20,7 @@ public class DoorHandle : Grabbable
     {
         if (holdingHand && !doorLock.isLocked())
         {
-            rb.velocity = (holdingHand.transform.position - transform.position) * 3;
+            rb.velocity = (holdingHand.transform.position - transform.position) * 10;
         }
     }
 
@@ -28,14 +28,14 @@ public class DoorHandle : Grabbable
     {
         holdingHand = hand;
 
-        transform.Rotate(rightHanded ? 45 : -45, 0, 0);
+        //transform.Rotate(rightHanded ? 45 : -45, 0, 0);
     }
 
     public override void StopHolding(ControllerGrabObject hand)
     {
         holdingHand = null;
 
-        transform.Rotate(rightHanded ? -45 : 45, 0, 0);
+        //transform.Rotate(rightHanded ? -45 : 45, 0, 0);
     }
 
 }

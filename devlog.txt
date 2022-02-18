@@ -86,3 +86,6 @@ https://forum.unity.com/threads/what-does-the-function-computescreenpos-in-unity
 * uksed töötavad nüüd HingeJointidel
 * PortalRotator ka
 * uuendused pööratavas ruumis
+
+18.02
+* reworked uste täiustamine
