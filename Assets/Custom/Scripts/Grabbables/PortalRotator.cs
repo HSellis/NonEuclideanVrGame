@@ -18,7 +18,7 @@ public class PortalRotator : Grabbable
     // Update is called once per frame
     void Update()
     {
-        if (holdingHand) rb.velocity = (holdingHand.transform.position - transform.position) * 3;
+        if (holdingHand) rb.velocity = (holdingHand.transform.position - transform.position) * 10;
 
         Vector3 rotatorEulerAngles = rotatingPart.rotation.eulerAngles;
         otherRoom.rotation = Quaternion.Euler(rotatorEulerAngles.x, -rotatorEulerAngles.y, rotatorEulerAngles.z);
