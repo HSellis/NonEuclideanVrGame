@@ -91,3 +91,7 @@ https://forum.unity.com/threads/what-does-the-function-computescreenpos-in-unity
 * reworked uste täiustamine
 * erinevate portalite public variableide õigeks panemine
 * pööratava ruumi edasiarendus
+
+21.02
+* pööratava ruumi sisenemine ja väljumine parem
+* import DOTween
