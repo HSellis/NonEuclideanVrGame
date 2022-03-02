@@ -95,3 +95,4 @@ https://forum.unity.com/threads/what-does-the-function-computescreenpos-in-unity
 21.02
 * pööratava ruumi sisenemine ja väljumine parem
 * import DOTween
+* viimane ruum murduva klaasiga, kus kukud läbi põranda

@@ -18,8 +18,12 @@ public class FallTriggerer : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        roomRigidbody.useGravity = true;
+        if (other.tag == "FreelyMovable" || other.tag == "Player")
+        {
+            GetComponent<Rigidbody>().useGravity = true;
+            roomRigidbody.useGravity = true;
+        }
     }
 }

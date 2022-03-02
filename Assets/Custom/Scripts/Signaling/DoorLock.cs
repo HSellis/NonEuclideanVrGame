@@ -17,6 +17,7 @@ public class DoorLock : Activatable
     void Start()
     {
         meshRenderer = GetComponent<MeshRenderer>();
+        doorRigidBody = transform.parent.GetComponent<Rigidbody>();
         controlStatus();
     }
 
