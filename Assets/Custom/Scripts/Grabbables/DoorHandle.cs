@@ -18,7 +18,7 @@ public class DoorHandle : Grabbable
     // Update is called once per frame
     void Update()
     {
-        if (holdingHand && !doorLock.isLocked())
+        if (holdingHand && (!doorLock || !doorLock.isLocked()))
         {
             rb.velocity = (holdingHand.transform.position - transform.position) * 10;
         }

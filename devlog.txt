@@ -96,3 +96,9 @@ https://forum.unity.com/threads/what-does-the-function-computescreenpos-in-unity
 * pööratava ruumi sisenemine ja väljumine parem
 * import DOTween
 * viimane ruum murduva klaasiga, kus kukud läbi põranda
+
+02.03
+* toa ruumis seina sisse auk, mille taga on portal
+
+03.03
+* toa ruumi täiendused
