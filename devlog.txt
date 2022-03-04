@@ -102,3 +102,6 @@ https://forum.unity.com/threads/what-does-the-function-computescreenpos-in-unity
 
 03.03
 * toa ruumi täiendused
+
+04.03
+* toa ruumis kapp avatavaks võtmega

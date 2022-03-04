@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class DoorLock : Activatable
 {
-    public int necessarySignals;
-    public int currentSignals = 0;
+    public List<Rigidbody> doors;
+
+    public int necessarySignals = 0;
+    private int currentSignals = 0;
 
     public Material lockedColour;
     public Material unlockedColour;
@@ -49,11 +51,25 @@ public class DoorLock : Activatable
         if (isLocked())
         {
             meshRenderer.material = lockedColour;
-            doorRigidBody.constraints = RigidbodyConstraints.FreezePosition;
+            if (doors == null) doorRigidBody.constraints = RigidbodyConstraints.FreezePosition;
+            else
+            {
+                foreach (Rigidbody rb in doors)
+                {
+                    rb.constraints = RigidbodyConstraints.FreezePosition;
+                }
+            }
         }
         else {
             meshRenderer.material = unlockedColour;
-            doorRigidBody.constraints = RigidbodyConstraints.None;
+            if (doors == null) doorRigidBody.constraints = RigidbodyConstraints.None;
+            else
+            {
+                foreach (Rigidbody rb in doors)
+                {
+                    rb.constraints = RigidbodyConstraints.None;
+                }
+            }
         }
     }
 }
