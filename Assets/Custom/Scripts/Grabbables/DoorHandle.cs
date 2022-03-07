@@ -20,7 +20,7 @@ public class DoorHandle : Grabbable
     {
         if (holdingHand && (!doorLock || !doorLock.isLocked()))
         {
-            rb.velocity = (holdingHand.transform.position - transform.position) * 10;
+            rb.velocity = (holdingHand.transform.position - transform.position) * 20;
         }
     }
 

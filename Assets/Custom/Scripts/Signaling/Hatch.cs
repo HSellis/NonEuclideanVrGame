@@ -22,7 +22,7 @@ public class Hatch : Activatable
 
     public override void Activate()
     {
-        transform.DOMove(origPos + new Vector3(0, 1, 0), 1);
+        transform.DOMove(origPos + new Vector3(0, 0.875f, 0), 1);
     }
 
     public override void Deactivate()

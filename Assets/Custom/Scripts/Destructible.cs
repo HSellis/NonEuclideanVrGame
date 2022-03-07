@@ -22,9 +22,13 @@ public class Destructible : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "Hammer")
+        Debug.Log("collision: " + collision.gameObject.name);
+        if (collision.gameObject.name.StartsWith("Hammer"))
         {
-            if (collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude > 1)
+            Rigidbody hammerBody = collision.gameObject.GetComponent<Rigidbody>();
+            Debug.Log(hammerBody.velocity.magnitude);
+            Debug.Log(hammerBody.angularVelocity.magnitude);
+            if (hammerBody.velocity.magnitude + hammerBody.angularVelocity.magnitude > 1)
             {
                 Destroy(duplicate.gameObject);
                 Destroy(gameObject);

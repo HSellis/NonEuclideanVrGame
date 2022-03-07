@@ -6,14 +6,14 @@ public class Duplicater : MonoBehaviour
 {
     public Transform thisRoom;
     public Transform otherRoom;
-    public string bigRoomName;
-    public string smallRoomName;
 
     public Duplicater duplicate;
     public bool isSource;
 
     private Rigidbody rigidBody;
     private Rigidbody duplicateRigidBody;
+
+    private float scaleDiff;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +23,8 @@ public class Duplicater : MonoBehaviour
 
         rigidBody = GetComponent<Rigidbody>();
         duplicateRigidBody = duplicate.GetComponent<Rigidbody>();
+
+        scaleDiff = transform.localScale.x / duplicate.transform.localScale.x;
     }
 
     private void OnDestroy()
@@ -118,19 +120,22 @@ public class Duplicater : MonoBehaviour
             duplicate.isSource = false;
             duplicateRigidBody.isKinematic = true;
 
-
+            /*
             if (roomName == bigRoomName)
             {
                 // Going to small room
-                transform.localScale /= 9;
+                
             }
             else if (roomName == smallRoomName)
             {
                 // Going to big room
-                transform.localScale *= 9;
+                transform.localScale *= 16;
             }
-        }
+            */
 
+            transform.localScale /= scaleDiff;
+        }
+            
     }
 
 

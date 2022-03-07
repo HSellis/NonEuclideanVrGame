@@ -105,3 +105,6 @@ https://forum.unity.com/threads/what-does-the-function-computescreenpos-in-unity
 
 04.03
 * toa ruumis kapp avatavaks võtmega
+
+07.03
+* väiksed fixid roomidele 8-12

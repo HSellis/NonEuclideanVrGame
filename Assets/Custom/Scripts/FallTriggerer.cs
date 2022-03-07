@@ -22,7 +22,7 @@ public class FallTriggerer : MonoBehaviour
     {
         if (other.tag == "FreelyMovable" || other.tag == "Player")
         {
-            GetComponent<Rigidbody>().useGravity = true;
+            Destroy(GetComponent<FixedJoint>());
             roomRigidbody.useGravity = true;
         }
     }
