@@ -108,3 +108,4 @@ https://forum.unity.com/threads/what-does-the-function-computescreenpos-in-unity
 
 07.03
 * väiksed fixid roomidele 8-12
+* BreakableGlass asset viimasesse Roomi
