@@ -45,8 +45,8 @@ public class PortalTeleporter : MonoBehaviour
             Vector3 portalToOther = other.transform.position - transform.position;
             float dotProduct = Vector3.Dot(transform.up, portalToOther);
 
-            if (dotProduct > 0f)
-            {
+            //if (dotProduct > 0f)
+            //{
                 Duplicater dupl = other.GetComponent<Duplicater>();
                 if (dupl)
                 {
@@ -77,7 +77,7 @@ public class PortalTeleporter : MonoBehaviour
                 collidingRigidBody.angularVelocity = objectAngularVelocity;
 
                 TeleportEvents.ObjectEnteredRoom(other.gameObject, destinationRoom.gameObject.name);
-            }
+            //}
             
             
         }

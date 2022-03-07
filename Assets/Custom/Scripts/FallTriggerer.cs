@@ -5,6 +5,7 @@ using UnityEngine;
 public class FallTriggerer : MonoBehaviour
 {
     public Rigidbody roomRigidbody;
+    public Rigidbody glassBreaker;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +23,7 @@ public class FallTriggerer : MonoBehaviour
     {
         if (other.tag == "FreelyMovable" || other.tag == "Player")
         {
-            Destroy(GetComponent<FixedJoint>());
+            glassBreaker.useGravity = true;
             roomRigidbody.useGravity = true;
         }
     }

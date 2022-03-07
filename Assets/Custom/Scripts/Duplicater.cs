@@ -133,7 +133,7 @@ public class Duplicater : MonoBehaviour
             }
             */
 
-            transform.localScale /= scaleDiff;
+            transform.localScale /= scaleDiff * scaleDiff;
         }
             
     }
