@@ -8,10 +8,12 @@ public class Key : Grabbable
     public bool isNecessaryScale = false;
     public float necessaryScale;
 
+    private Vector3 origPos;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        origPos = transform.position;
     }
 
     // Update is called once per frame
@@ -23,6 +25,12 @@ public class Key : Grabbable
         if (toLock.magnitude <= 0.1)
         {
             doorLock.Activate();
+        }
+
+        if (transform.position.y < -200)
+        {
+            transform.position = origPos + new Vector3(0, 0.1f, 0);
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
     }
 

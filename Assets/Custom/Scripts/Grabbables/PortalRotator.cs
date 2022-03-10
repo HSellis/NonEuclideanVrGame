@@ -8,6 +8,7 @@ public class PortalRotator : Grabbable
     public Transform rotatingPart;
 
     private Rigidbody rb;
+    private Vector3 grabPointRelativePos;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +19,11 @@ public class PortalRotator : Grabbable
     // Update is called once per frame
     void Update()
     {
-        if (holdingHand) rb.velocity = (holdingHand.transform.position - transform.position) * 30;
+        if (holdingHand)
+        {
+            Vector3 grabPointInWorldSpace = transform.TransformPoint(grabPointRelativePos);
+            rb.velocity = (holdingHand.transform.position - grabPointInWorldSpace) * 20;
+        }
 
         Vector3 rotatorEulerAngles = rotatingPart.rotation.eulerAngles;
         otherRoom.rotation = Quaternion.Euler(rotatorEulerAngles.x, -rotatorEulerAngles.y, rotatorEulerAngles.z);
@@ -27,6 +32,7 @@ public class PortalRotator : Grabbable
     public override void StartHolding(ControllerGrabObject hand)
     {
         holdingHand = hand;
+        grabPointRelativePos = transform.InverseTransformPoint(hand.transform.position);
     }
 
     public override void StopHolding(ControllerGrabObject hand)

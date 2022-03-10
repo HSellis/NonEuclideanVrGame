@@ -8,6 +8,7 @@ public class DoorHandle : Grabbable
     public bool rightHanded;
 
     private Rigidbody rb;
+    private Vector3 grabPointRelativePos;
 
     // Start is called before the first frame update
     void Start()
@@ -20,13 +21,15 @@ public class DoorHandle : Grabbable
     {
         if (holdingHand && (!doorLock || !doorLock.isLocked()))
         {
-            rb.velocity = (holdingHand.transform.position - transform.position) * 20;
+            Vector3 grabPointInWorldSpace = transform.TransformPoint(grabPointRelativePos);
+            rb.velocity = (holdingHand.transform.position - grabPointInWorldSpace) * 20;
         }
     }
 
     public override void StartHolding(ControllerGrabObject hand)
     {
         holdingHand = hand;
+        grabPointRelativePos = transform.InverseTransformPoint(hand.transform.position);
 
         //transform.Rotate(rightHanded ? 45 : -45, 0, 0);
     }

@@ -10,6 +10,7 @@ public class PortalFoVChanger : Grabbable
     private float timerTick;
     private int multiplier = 1;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,7 @@ public class PortalFoVChanger : Grabbable
             int i = 0;
             foreach (Camera portalCam in portalCameras)
             {
+                
                 if (aspectRatio)
                 {
 
@@ -39,6 +41,8 @@ public class PortalFoVChanger : Grabbable
                     portalCam.fieldOfView += 1 * multiplier;
                     if (i == 0) Debug.Log("Field of view: " + portalCam.fieldOfView);
                 }
+                
+
                 i++;
             }
             timerTick = Time.time + 1;

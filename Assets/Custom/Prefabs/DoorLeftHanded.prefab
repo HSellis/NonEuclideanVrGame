@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6562491930729559153}
   - component: {fileID: 2742328007239710758}
   - component: {fileID: 3639517562470863581}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: DoorHandle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 1242207594489347149}
   - component: {fileID: 1792737316438529460}
   - component: {fileID: 3534117672039518516}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: DoorHandleBody1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -205,7 +205,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4820110467681508421}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: DoorLeftHanded
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -243,7 +243,7 @@ GameObject:
   - component: {fileID: 4820110468872592069}
   - component: {fileID: 8950515922199075335}
   - component: {fileID: 5637399121298420996}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: DoorBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -393,7 +393,7 @@ GameObject:
   - component: {fileID: 815924294544718748}
   - component: {fileID: 8158214415508538469}
   - component: {fileID: 8349958632174201049}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: DoorHandleBody2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -491,7 +491,7 @@ GameObject:
   - component: {fileID: 5403565081377415364}
   - component: {fileID: 7182375402166305887}
   - component: {fileID: 6910790676201579796}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: DoorLock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -575,7 +575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6783be122fd4442ac68b404cac5183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doors: []
   necessarySignals: 0
-  currentSignals: 0
   lockedColour: {fileID: 2100000, guid: a893aba3e1b16144b836e9b9eb160984, type: 2}
   unlockedColour: {fileID: 2100000, guid: a846ad60822a0494a9bf07c8d80d4246, type: 2}

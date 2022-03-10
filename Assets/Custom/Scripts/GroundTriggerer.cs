@@ -20,9 +20,9 @@ public class GroundTriggerer : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.transform == fromRoom)
+        if (other.transform == fromRoom)
         {
             playArea.parent = destinationRoom;
             playArea.localPosition = Vector3.zero;
