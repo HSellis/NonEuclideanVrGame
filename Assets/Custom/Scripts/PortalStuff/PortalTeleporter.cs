@@ -32,8 +32,8 @@ public class PortalTeleporter : MonoBehaviour
             if (dotProduct > 0f)
             {
                 playArea.parent = destinationRoom;
-                playArea.localPosition = new Vector3(0, 0, 0);
-                playArea.localRotation = Quaternion.Euler(0, 0, 0);
+                playArea.localPosition = Vector3.zero;
+                playArea.localRotation = Quaternion.identity;
 
                 TeleportEvents.PlayerEnteredRoom(destinationRoom.gameObject.name);
             }
