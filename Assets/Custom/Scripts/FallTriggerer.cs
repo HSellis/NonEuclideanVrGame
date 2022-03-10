@@ -23,7 +23,7 @@ public class FallTriggerer : MonoBehaviour
     {
         if (other.tag == "FreelyMovable" || other.tag == "Player")
         {
-            glassBreaker.useGravity = true;
+            //glassBreaker.useGravity = true;
             roomRigidbody.useGravity = true;
         }
     }

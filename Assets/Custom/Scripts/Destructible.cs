@@ -28,7 +28,7 @@ public class Destructible : MonoBehaviour
             Rigidbody hammerBody = collision.gameObject.GetComponent<Rigidbody>();
             Debug.Log(hammerBody.velocity.magnitude);
             Debug.Log(hammerBody.angularVelocity.magnitude);
-            if (hammerBody.velocity.magnitude + hammerBody.angularVelocity.magnitude > 1)
+            if (hammerBody.velocity.magnitude + hammerBody.angularVelocity.magnitude > 2)
             {
                 Destroy(duplicate.gameObject);
                 Destroy(gameObject);

@@ -114,3 +114,4 @@ https://forum.unity.com/threads/what-does-the-function-computescreenpos-in-unity
 * Oculuse (facebooki) konto setup kuigi seda polnud tglt vajagi...
 * viimane Room
 * grabPoint DoorHandle'ile ja PortalRotatorile
+* väiksed improvementid
