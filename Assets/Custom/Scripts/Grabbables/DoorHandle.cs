@@ -5,7 +5,7 @@ using UnityEngine;
 public class DoorHandle : Grabbable
 {
     public DoorLock doorLock;
-    public bool rightHanded;
+    //public bool rightHanded;
 
     private Rigidbody rb;
     private Vector3 grabPointRelativePos;
