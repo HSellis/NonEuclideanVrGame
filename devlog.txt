@@ -120,3 +120,4 @@ https://forum.unity.com/threads/what-does-the-function-computescreenpos-in-unity
 * Lobby
 * uksega kasti fix
 * uued uksed asset store'ist
+* materialid esimestele Roomidele
