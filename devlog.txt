@@ -115,3 +115,6 @@ https://forum.unity.com/threads/what-does-the-function-computescreenpos-in-unity
 * viimane Room
 * grabPoint DoorHandle'ile ja PortalRotatorile
 * väiksed improvementid
+
+11.03
+* Lobby
