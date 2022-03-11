@@ -118,3 +118,4 @@ https://forum.unity.com/threads/what-does-the-function-computescreenpos-in-unity
 
 11.03
 * Lobby
+* uksega kasti fix

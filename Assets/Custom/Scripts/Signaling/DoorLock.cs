@@ -51,6 +51,7 @@ public class DoorLock : Activatable
         if (isLocked())
         {
             meshRenderer.material = lockedColour;
+            
             if (doors == null) doorRigidBody.constraints = RigidbodyConstraints.FreezePosition;
             else
             {
@@ -59,6 +60,7 @@ public class DoorLock : Activatable
                     rb.constraints = RigidbodyConstraints.FreezePosition;
                 }
             }
+            
         }
         else {
             meshRenderer.material = unlockedColour;
