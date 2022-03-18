@@ -121,3 +121,6 @@ https://forum.unity.com/threads/what-does-the-function-computescreenpos-in-unity
 * uksega kasti fix
 * uued uksed asset store'ist
 * materialid esimestele Roomidele
+
+18.03
+* täiendatud esimeste ruumide materjale, layereid ja uksi

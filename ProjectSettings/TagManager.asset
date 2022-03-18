@@ -15,18 +15,18 @@ TagManager:
   - UI
   - Left Eye
   - Right Eye
-  - PortalCam 1 Invis
+  - PortalCam 1&3 Invis
   - PortalCam 5 Invis
   - PortalCam 6 Invis
   - PortalCam 11 Invis
   - PortalCam 14 Invis
   - PortalCam 16 Invis
+  - PortalCam 4 Invis
+  - PortalCam 13 Invis
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - DoorFrame
+  - DoorWing
   - 
   - 
   - 
