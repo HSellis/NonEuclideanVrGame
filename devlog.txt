@@ -124,3 +124,5 @@ https://forum.unity.com/threads/what-does-the-function-computescreenpos-in-unity
 
 18.03
 * täiendatud esimeste ruumide materjale, layereid ja uksi
+* ülejäänud Roomidesse materjalid
+* viimase Roomi täiendused
