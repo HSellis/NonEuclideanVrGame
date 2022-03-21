@@ -29,14 +29,14 @@ public class PortalTeleporter : MonoBehaviour
             float dotProduct = Vector3.Dot(transform.up, portalToOther);
             //Debug.Log("dot product: " + dotProduct);
 
-            //if (dotProduct > 0f)
-            //{
+            if (dotProduct > 0f)
+            {
                 playArea.parent = destinationRoom;
                 playArea.localPosition = Vector3.zero;
                 playArea.localRotation = Quaternion.Euler(0, 0, 0);
 
                 TeleportEvents.PlayerEnteredRoom(destinationRoom.gameObject.name);
-            //}
+            }
                 
                 
         }

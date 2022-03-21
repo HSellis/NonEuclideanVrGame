@@ -126,3 +126,6 @@ https://forum.unity.com/threads/what-does-the-function-computescreenpos-in-unity
 * täiendatud esimeste ruumide materjale, layereid ja uksi
 * ülejäänud Roomidesse materjalid
 * viimase Roomi täiendused
+
+21.03
+* uksed on nüüd päriselt ka lukus kui isLocked()

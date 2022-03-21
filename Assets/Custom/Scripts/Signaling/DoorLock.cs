@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DoorLock : Activatable
 {
-    public List<Rigidbody> doors;
+    public List<Rigidbody> doors = new List<Rigidbody>();
 
     public int necessarySignals = 0;
     private int currentSignals = 0;
@@ -13,13 +13,17 @@ public class DoorLock : Activatable
     public Material unlockedColour;
 
     private MeshRenderer meshRenderer;
-    private Rigidbody doorRigidBody;
 
     // Start is called before the first frame update
     void Start()
     {
         meshRenderer = GetComponent<MeshRenderer>();
-        doorRigidBody = transform.parent.GetComponent<Rigidbody>();
+
+        if (doors.Count == 0)
+        {
+            doors = new List<Rigidbody>();
+            doors.Add(transform.parent.GetComponent<Rigidbody>());
+        }
         controlStatus();
     }
 
@@ -51,26 +55,20 @@ public class DoorLock : Activatable
         if (isLocked())
         {
             meshRenderer.material = lockedColour;
-            
-            if (doors == null) doorRigidBody.constraints = RigidbodyConstraints.FreezePosition;
-            else
+
+            foreach (Rigidbody rb in doors)
             {
-                foreach (Rigidbody rb in doors)
-                {
-                    rb.constraints = RigidbodyConstraints.FreezePosition;
-                }
+                FixedJoint fixer = rb.gameObject.AddComponent<FixedJoint>();
+                fixer.connectedBody = rb.gameObject.GetComponent<HingeJoint>().connectedBody;
             }
-            
         }
         else {
             meshRenderer.material = unlockedColour;
-            if (doors == null) doorRigidBody.constraints = RigidbodyConstraints.None;
-            else
+
+            foreach (Rigidbody rb in doors)
             {
-                foreach (Rigidbody rb in doors)
-                {
-                    rb.constraints = RigidbodyConstraints.None;
-                }
+                FixedJoint fixer = rb.gameObject.GetComponent<FixedJoint>();
+                if (fixer != null) Destroy(fixer);
             }
         }
     }
