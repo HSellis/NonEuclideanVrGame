@@ -21,7 +21,6 @@ public class DoorLock : Activatable
 
         if (doors.Count == 0)
         {
-            doors = new List<Rigidbody>();
             doors.Add(transform.parent.GetComponent<Rigidbody>());
         }
         controlStatus();

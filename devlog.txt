@@ -129,3 +129,6 @@ https://forum.unity.com/threads/what-does-the-function-computescreenpos-in-unity
 
 21.03
 * uksed on nüüd päriselt ka lukus kui isLocked()
+* cutout shaderi vea kohta uurimine:
+- https://forum.unity.com/threads/the-result-of-computescreenpos-is-different-between-vrs-lefteye-image-and-righteye-image.540654/
+- https://stackoverflow.com/questions/46830737/sample-screenspace-texture-from-fragment-shader-in-vr
