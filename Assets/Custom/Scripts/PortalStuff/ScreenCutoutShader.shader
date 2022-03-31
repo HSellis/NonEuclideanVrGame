@@ -47,6 +47,9 @@ Shader "Unlit/ScreenCutoutShader"
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o); // added
 				o.vertex = UnityObjectToClipPos(v.vertex);
 				o.screenPos = ComputeScreenPos(o.vertex);
+				o.screenPos.x -= 0.05 + 0.1 * unity_StereoEyeIndex;
+				//o.screenPos = ComputeNonStereoScreenPos(o.vertex); // ?
+				//o.screenPos.xy = TransformStereoScreenSpaceTex(o.screenPos.xy, o.vertex.w); // ?
 				return o;
 			}
 			
