@@ -132,3 +132,9 @@ https://forum.unity.com/threads/what-does-the-function-computescreenpos-in-unity
 * cutout shaderi vea kohta uurimine:
 - https://forum.unity.com/threads/the-result-of-computescreenpos-is-different-between-vrs-lefteye-image-and-righteye-image.540654/
 - https://stackoverflow.com/questions/46830737/sample-screenspace-texture-from-fragment-shader-in-vr
+
+31.03
+* XR Interaction Toolkit - ikka cutout shaderi probleem alles
+* cutout shaderi muutmine
+- https://forum.unity.com/threads/solved-clip-space-to-world-space-in-a-vertex-shader.531492/
+- https://forum.unity.com/threads/remove-position-from-view-matrix.1171154/

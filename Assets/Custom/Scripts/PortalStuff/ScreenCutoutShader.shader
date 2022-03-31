@@ -45,9 +45,16 @@ Shader "Unlit/ScreenCutoutShader"
 				v2f o;
 				UNITY_SETUP_INSTANCE_ID(v); // added
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o); // added
-				o.vertex = UnityObjectToClipPos(v.vertex);
+				//o.vertex = UnityObjectToClipPos(v.vertex);
+
+				float4x4 MatrixMVPWithoutOffset = UNITY_MATRIX_MVP;
+				MatrixMVPWithoutOffset[0, 3] = 0;
+				MatrixMVPWithoutOffset[1, 3] = 0;
+				MatrixMVPWithoutOffset[2, 3] = 0;
+				o.vertex = mul(MatrixMVPWithoutOffset, v.vertex);
+
 				o.screenPos = ComputeScreenPos(o.vertex);
-				o.screenPos.x -= 0.05 + 0.1 * unity_StereoEyeIndex;
+				//o.screenPos.x -= 0.05 + 0.1 * unity_StereoEyeIndex;
 				//o.screenPos = ComputeNonStereoScreenPos(o.vertex); // ?
 				//o.screenPos.xy = TransformStereoScreenSpaceTex(o.screenPos.xy, o.vertex.w); // ?
 				return o;

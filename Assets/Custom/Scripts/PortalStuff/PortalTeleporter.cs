@@ -7,17 +7,6 @@ public class PortalTeleporter : MonoBehaviour
     public Transform playArea;
     public Transform destinationRoom;
 
-    
-    void Start()
-    {
-        
-    }
-
-    
-    void Update()
-    {
-        
-    }
 
     private void OnTriggerEnter(Collider other)
     {
