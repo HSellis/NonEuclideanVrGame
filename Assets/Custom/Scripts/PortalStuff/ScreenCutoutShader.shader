@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 // Upgrade NOTE: replaced 'UNITY_INSTANCE_ID' with 'UNITY_VERTEX_INPUT_INSTANCE_ID'
 
 // Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
@@ -45,13 +47,13 @@ Shader "Unlit/ScreenCutoutShader"
 				v2f o;
 				UNITY_SETUP_INSTANCE_ID(v); // added
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o); // added
-				//o.vertex = UnityObjectToClipPos(v.vertex);
+				o.vertex = UnityObjectToClipPos(v.vertex);
 
-				float4x4 MatrixMVPWithoutOffset = UNITY_MATRIX_MVP;
-				MatrixMVPWithoutOffset[0, 3] = 0;
-				MatrixMVPWithoutOffset[1, 3] = 0;
-				MatrixMVPWithoutOffset[2, 3] = 0;
-				o.vertex = mul(MatrixMVPWithoutOffset, v.vertex);
+				//float4x4 MatrixMVPWithoutOffset = UNITY_MATRIX_MVP;
+				//MatrixMVPWithoutOffset[0, 3] += 0.01;
+				//MatrixMVPWithoutOffset[1, 3] += 0.01;
+				//MatrixMVPWithoutOffset[2, 3] += 0.01;
+				//o.vertex = mul(MatrixMVPWithoutOffset, v.vertex);
 
 				o.screenPos = ComputeScreenPos(o.vertex);
 				//o.screenPos.x -= 0.05 + 0.1 * unity_StereoEyeIndex;
@@ -64,6 +66,9 @@ Shader "Unlit/ScreenCutoutShader"
 
 			fixed4 frag (v2f i) : SV_Target
 			{
+				float asd = UNITY_MATRIX_V[0, 2];
+				return float4(asd, 0, 0, 1);
+
 				i.screenPos /= i.screenPos.w;
 				fixed4 col = tex2D(_MainTex, float2(i.screenPos.x, i.screenPos.y));
 				

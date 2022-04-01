@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8968009634425498386}
   - component: {fileID: 8958155110987478316}
   - component: {fileID: 8935791245272470432}
-  - component: {fileID: 8935791245272470458}
+  - component: {fileID: 4783994824497777367}
   - component: {fileID: 8935791245272470459}
   m_Layer: 19
   m_Name: doorWing
@@ -102,8 +102,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &8935791245272470458
-MeshCollider:
+--- !u!65 &4783994824497777367
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -112,10 +112,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: f0d4298dcac2ffd499747abaa06977ee, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.91890264, y: 1.9499999, z: 0.040926464}
+  m_Center: {x: -0.44891596, y: 0.9749999, z: -0.011339351}
 --- !u!59 &8935791245272470459
 HingeJoint:
   m_ObjectHideFlags: 0
@@ -296,7 +295,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 7f64fa277f063764fa867c869ab08563, type: 3}
 --- !u!138 &8935791245272470433

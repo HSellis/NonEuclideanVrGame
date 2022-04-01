@@ -138,3 +138,7 @@ https://forum.unity.com/threads/what-does-the-function-computescreenpos-in-unity
 * cutout shaderi muutmine
 - https://forum.unity.com/threads/solved-clip-space-to-world-space-in-a-vertex-shader.531492/
 - https://forum.unity.com/threads/remove-position-from-view-matrix.1171154/
+
+01.04
+* cutout shader: camera erinevad maatriksid
+- https://answers.unity.com/questions/1359718/what-do-the-values-in-the-matrix4x4-for-cameraproj.html
