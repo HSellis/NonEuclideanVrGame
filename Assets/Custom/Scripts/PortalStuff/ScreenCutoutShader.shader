@@ -57,17 +57,27 @@ Shader "Unlit/ScreenCutoutShader"
 
 				o.screenPos = ComputeScreenPos(o.vertex);
 				//o.screenPos.x -= 0.05 + 0.1 * unity_StereoEyeIndex;
-				//o.screenPos = ComputeNonStereoScreenPos(o.vertex); // ?
-				//o.screenPos.xy = TransformStereoScreenSpaceTex(o.screenPos.xy, o.vertex.w); // ?
+				
+				float rotation = UNITY_MATRIX_V[0, 1];
+
+				float offsetX = (1 - abs(rotation)) * 0.2;
+				o.screenPos.x -= 0.5 * offsetX;
+				o.screenPos.x += unity_StereoEyeIndex * offsetX;
+				o.screenPos.y += 0.1 * rotation;
+				o.screenPos.y -= unity_StereoEyeIndex * 0.2 * rotation;
+
 				return o;
 			}
 			
 			sampler2D _MainTex;
 
-			fixed4 frag (v2f i) : SV_Target
+			fixed4 frag(v2f i) : SV_Target
 			{
-				float asd = UNITY_MATRIX_V[0, 2];
-				return float4(asd, 0, 0, 1);
+				float a = UNITY_MATRIX_V[0, 1];
+				//float b = UNITY_MATRIX_V[1, 1];
+				//float c = UNITY_MATRIX_V[2, 1];
+				//return float4(a, 0, 0, 1);
+
 
 				i.screenPos /= i.screenPos.w;
 				fixed4 col = tex2D(_MainTex, float2(i.screenPos.x, i.screenPos.y));
