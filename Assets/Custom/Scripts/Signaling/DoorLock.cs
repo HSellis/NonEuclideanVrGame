@@ -57,8 +57,11 @@ public class DoorLock : Activatable
 
             foreach (Rigidbody rb in doors)
             {
-                FixedJoint fixer = rb.gameObject.AddComponent<FixedJoint>();
-                fixer.connectedBody = rb.gameObject.GetComponent<HingeJoint>().connectedBody;
+                if (rb.gameObject.GetComponent<FixedJoint>() == null)
+                {
+                    FixedJoint fixer = rb.gameObject.AddComponent<FixedJoint>();
+                    fixer.connectedBody = rb.gameObject.GetComponent<HingeJoint>().connectedBody;
+                }
             }
         }
         else {
@@ -67,6 +70,7 @@ public class DoorLock : Activatable
             foreach (Rigidbody rb in doors)
             {
                 FixedJoint fixer = rb.gameObject.GetComponent<FixedJoint>();
+                Debug.Log(fixer);
                 if (fixer != null) Destroy(fixer);
             }
         }

@@ -13,10 +13,14 @@ public class PortalCamera : MonoBehaviour
     public Transform thisRoom;
     public Transform otherRoom;
 
-    public float fieldOfView = 98;
-    public float aspectRatio = 0.85f;
+    // Quest 2
+    //public float fieldOfView = 98;
+    //public float aspectRatio = 0.85f;
+    // HTC Vive Pro
+    private float fieldOfView = 110;
+    private float aspectRatio = 0.85f;
 
-    
+
     void Start()
     {
         camera = GetComponent<Camera>();
@@ -32,7 +36,6 @@ public class PortalCamera : MonoBehaviour
         cameraTextureMat.mainTexture = camera.targetTexture;
 
         camera.aspect = aspectRatio;
-        //Debug.Log("aspect ratio: " + camera.aspect);
         camera.fieldOfView = fieldOfView;
         camera.aspect = aspectRatio;
 

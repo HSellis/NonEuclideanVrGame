@@ -1,9 +1,3 @@
-// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
-// Upgrade NOTE: replaced 'UNITY_INSTANCE_ID' with 'UNITY_VERTEX_INPUT_INSTANCE_ID'
-
-// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
 Shader "Unlit/ScreenCutoutShader"
 {
 	Properties
@@ -58,13 +52,18 @@ Shader "Unlit/ScreenCutoutShader"
 				o.screenPos = ComputeScreenPos(o.vertex);
 				//o.screenPos.x -= 0.05 + 0.1 * unity_StereoEyeIndex;
 				
-				float rotation = UNITY_MATRIX_V[0, 1];
+				float k = length(WorldSpaceViewDir(v.vertex));
+				float distance = k * k * k;
+				float offset = 0.005 * distance + 0.01;
+				//float rotation = UNITY_MATRIX_V[0, 1];
 
-				float offsetX = (1 - abs(rotation)) * 0.2;
-				o.screenPos.x -= 0.5 * offsetX;
-				o.screenPos.x += unity_StereoEyeIndex * offsetX;
-				o.screenPos.y += 0.1 * rotation;
-				o.screenPos.y -= unity_StereoEyeIndex * 0.2 * rotation;
+				//float offsetX = (1 - abs(rotation)) * 0.2;
+				//o.screenPos.x -= 0.5 * offsetX;
+				//o.screenPos.x += unity_StereoEyeIndex * offsetX;
+				o.screenPos.x -= offset;
+				o.screenPos.x += 2 * unity_StereoEyeIndex * offset;
+				//o.screenPos.y += 0.15 * rotation;
+				//o.screenPos.y -= unity_StereoEyeIndex * 0.3 * rotation;
 
 				return o;
 			}
@@ -73,15 +72,8 @@ Shader "Unlit/ScreenCutoutShader"
 
 			fixed4 frag(v2f i) : SV_Target
 			{
-				float a = UNITY_MATRIX_V[0, 1];
-				//float b = UNITY_MATRIX_V[1, 1];
-				//float c = UNITY_MATRIX_V[2, 1];
-				//return float4(a, 0, 0, 1);
-
-
 				i.screenPos /= i.screenPos.w;
 				fixed4 col = tex2D(_MainTex, float2(i.screenPos.x, i.screenPos.y));
-				
 				return col;
 			}
 			ENDCG
