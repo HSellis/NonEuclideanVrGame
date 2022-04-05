@@ -146,3 +146,6 @@ https://forum.unity.com/threads/what-does-the-function-computescreenpos-in-unity
 04.04
 * jälle cutout shader
 - x ja y offset kaamera rotationi põhjal
+
+05.04
+* FINALLY CUTOUT SHADER SUHT TÖÖTAB
