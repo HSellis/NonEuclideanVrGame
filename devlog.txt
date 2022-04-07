@@ -149,3 +149,7 @@ https://forum.unity.com/threads/what-does-the-function-computescreenpos-in-unity
 
 05.04
 * FINALLY CUTOUT SHADER SUHT TÖÖTAB
+
+07.04
+* ruumid ilusamaks
+* uus kapp kahandavasse ruumi
