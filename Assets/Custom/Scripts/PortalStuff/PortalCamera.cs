@@ -14,11 +14,11 @@ public class PortalCamera : MonoBehaviour
     public Transform otherRoom;
 
     // Quest 2
-    //public float fieldOfView = 98;
-    //public float aspectRatio = 0.85f;
+    private float fieldOfView = 95;
+    private float aspectRatio = 1;
     // HTC Vive Pro
-    private float fieldOfView = 110;
-    private float aspectRatio = 0.85f;
+    //private float fieldOfView = 110;
+    //private float aspectRatio = 0.85f;
 
 
     void Start()

@@ -42,20 +42,17 @@ Shader "Unlit/ScreenCutoutShader"
 				UNITY_SETUP_INSTANCE_ID(v); // added
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o); // added
 				o.vertex = UnityObjectToClipPos(v.vertex);
-
-				//float4x4 MatrixMVPWithoutOffset = UNITY_MATRIX_MVP;
-				//MatrixMVPWithoutOffset[0, 3] += 0.01;
-				//MatrixMVPWithoutOffset[1, 3] += 0.01;
-				//MatrixMVPWithoutOffset[2, 3] += 0.01;
-				//o.vertex = mul(MatrixMVPWithoutOffset, v.vertex);
-
 				o.screenPos = ComputeScreenPos(o.vertex);
-				//o.screenPos.x -= 0.05 + 0.1 * unity_StereoEyeIndex;
 				
 				float k = length(WorldSpaceViewDir(v.vertex));
-				float distance = k * k * k;
-				float offset = 0.005 * distance + 0.01;
-				//float rotation = UNITY_MATRIX_V[0, 1];
+				// HTC Vive
+				//float distance = k * k * k;
+				//float offset = 0.005 * distance + 0.01;
+
+				// Quest 2
+				//float distance = k * k * k + 1;
+				float offset = 0.06 * (k + 0.1) ; // Quest 2
+				
 
 				//float offsetX = (1 - abs(rotation)) * 0.2;
 				//o.screenPos.x -= 0.5 * offsetX;

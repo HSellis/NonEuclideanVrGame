@@ -153,3 +153,4 @@ https://forum.unity.com/threads/what-does-the-function-computescreenpos-in-unity
 07.04
 * ruumid ilusamaks
 * uus kapp kahandavasse ruumi
+* Cutout shaderile täpsema offset funktsiooni tegemine
