@@ -154,3 +154,8 @@ https://forum.unity.com/threads/what-does-the-function-computescreenpos-in-unity
 * ruumid ilusamaks
 * uus kapp kahandavasse ruumi
 * Cutout shaderile täpsema offset funktsiooni tegemine
+
+13.04
+* purustatav sein
+* purustatav klaas
+* staatiliste objektide korrastamine
