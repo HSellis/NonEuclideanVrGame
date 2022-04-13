@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Destructible : MonoBehaviour
 {
+    public AudioClip breakingSound;
+
     public float explosionForce = 50;
 
     // Start is called before the first frame update
@@ -30,19 +32,34 @@ public class Destructible : MonoBehaviour
             if (hammerBody.velocity.magnitude + hammerBody.angularVelocity.magnitude > 1.5f)
             {
                 Vector3 hammerPos = other.gameObject.transform.position;
-                foreach (Rigidbody rb in transform.GetComponentsInChildren<Rigidbody>())
-                {
-                    rb.isKinematic = false;
-                    rb.AddExplosionForce(explosionForce, hammerPos, 0.5f);
-
-                    Duplicater dupl = rb.GetComponent<Duplicater>();
-                    dupl.isChangeLocked = false;
-                    dupl.duplicate.isChangeLocked = false;
-                }
+                Break(hammerPos, explosionForce);
             }
 
         }
     }
 
+    public void Break(Vector3 breakingPoint, float force)
+    {
+        AudioSource audio = GetComponent<AudioSource>();
+        if (audio != null && breakingSound != null)
+        {
+            audio.clip = breakingSound;
+            audio.Play();
+        }
+        
+
+        foreach (Rigidbody rb in transform.GetComponentsInChildren<Rigidbody>())
+        {
+            rb.isKinematic = false;
+            rb.AddExplosionForce(force, breakingPoint, 0.5f);
+
+            Duplicater dupl = rb.GetComponent<Duplicater>();
+            if (dupl)
+            {
+                dupl.isChangeLocked = false;
+                dupl.duplicate.isChangeLocked = false;
+            }
+        }
+    }
 
 }
