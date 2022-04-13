@@ -9,6 +9,7 @@ public class Duplicater : MonoBehaviour
 
     public Duplicater duplicate;
     public bool isSource;
+    public bool isChangeLocked = false;
 
     private Rigidbody rigidBody;
     private Rigidbody duplicateRigidBody;
@@ -72,11 +73,11 @@ public class Duplicater : MonoBehaviour
         if (roomName + "Static" == thisRoom.gameObject.name)
         {
             isSource = true;
-            rigidBody.isKinematic = false;
+            if (!isChangeLocked) rigidBody.isKinematic = false;
         } else
         {
             isSource = false;
-            rigidBody.isKinematic = true;
+            if (!isChangeLocked) rigidBody.isKinematic = true;
         }
     }
 
@@ -117,21 +118,9 @@ public class Duplicater : MonoBehaviour
             // I am now source, not my duplicate
             isSource = true;
             rigidBody.isKinematic = false;
-            duplicate.isSource = false;
-            duplicateRigidBody.isKinematic = true;
+            if (!isChangeLocked) duplicate.isSource = false;
+            if (!duplicate.isChangeLocked) duplicateRigidBody.isKinematic = true;
 
-            /*
-            if (roomName == bigRoomName)
-            {
-                // Going to small room
-                
-            }
-            else if (roomName == smallRoomName)
-            {
-                // Going to big room
-                transform.localScale *= 16;
-            }
-            */
 
             transform.localScale /= scaleDiff * scaleDiff;
         }

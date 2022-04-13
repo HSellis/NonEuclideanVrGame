@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class Destructible : MonoBehaviour
 {
-    public Destructible duplicate;
-
-    private MeshRenderer meshRenderer;
+    public float explosionForce = 50;
 
     // Start is called before the first frame update
     void Start()
     {
-        meshRenderer = GetComponent<MeshRenderer>();
+        
     }
 
     // Update is called once per frame
@@ -20,21 +18,29 @@ public class Destructible : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("collision: " + collision.gameObject.name);
-        if (collision.gameObject.name.StartsWith("Hammer"))
+        if (other.gameObject.name.StartsWith("Hammer"))
         {
-            Rigidbody hammerBody = collision.gameObject.GetComponent<Rigidbody>();
+
+            Rigidbody hammerBody = other.gameObject.GetComponent<Rigidbody>();
             Debug.Log(hammerBody.velocity.magnitude);
             Debug.Log(hammerBody.angularVelocity.magnitude);
             if (hammerBody.velocity.magnitude + hammerBody.angularVelocity.magnitude > 1.5f)
             {
-                Destroy(duplicate.gameObject);
-                Destroy(gameObject);
-                
+                Vector3 hammerPos = other.gameObject.transform.position;
+                foreach (Rigidbody rb in transform.GetComponentsInChildren<Rigidbody>())
+                {
+                    rb.isKinematic = false;
+                    rb.AddExplosionForce(explosionForce, hammerPos, 0.5f);
+
+                    Duplicater dupl = rb.GetComponent<Duplicater>();
+                    dupl.isChangeLocked = false;
+                    dupl.duplicate.isChangeLocked = false;
+                }
             }
-            
+
         }
     }
 
