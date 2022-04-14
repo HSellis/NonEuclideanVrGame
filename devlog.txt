@@ -164,3 +164,4 @@ https://forum.unity.com/threads/what-does-the-function-computescreenpos-in-unity
 * ühe käe inerts fixed
 * asjad ei lähe käest ära portaalist läbi minnes
 * portali renderdamise lihvimine
+* väiksed bug fixid, QoL improvements

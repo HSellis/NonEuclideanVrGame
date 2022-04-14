@@ -22,7 +22,7 @@ public class Key : Grabbable
         if (isNecessaryScale && transform.localScale.x != necessaryScale) return;
 
         Vector3 toLock = doorLock.transform.position - transform.position;
-        if (toLock.magnitude <= 0.1)
+        if (toLock.magnitude <= 0.05)
         {
             doorLock.Activate();
         }
