@@ -5,7 +5,6 @@ using UnityEngine.XR;
 
 public class GameController : MonoBehaviour
 {
-    public string startRoom;
 
     private void Awake()
     {
@@ -15,7 +14,8 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TeleportEvents.PlayerEnteredRoom(startRoom);
+        Transform playerRoom = GameObject.Find("[CameraRig]").transform.parent;
+        TeleportEvents.PlayerEnteredRoom(playerRoom.name);
     }
 
     // Update is called once per frame

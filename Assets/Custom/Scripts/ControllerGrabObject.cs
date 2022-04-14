@@ -12,7 +12,6 @@ public class ControllerGrabObject : MonoBehaviour
     private Grabbable collidingGrabbable;
     private Grabbable grabbableInHand;
     private Vector3 grabPointRelativeToGrabbable;
-    //private Vector3 handGrabbablePrevPos;
 
 
     private void SetCollidingObject(Collider col)
@@ -48,9 +47,8 @@ public class ControllerGrabObject : MonoBehaviour
         {
             Vector3 grabPointInWorldSpace = grabbableInHand.transform.TransformPoint(grabPointRelativeToGrabbable);
             Vector3 handOffsetFromGrabPoint = transform.position - grabPointInWorldSpace;
-            //Vector3 grabbableToPrevPos = handGrabbablePrevPos - grabbableInHand.transform.position;
 
-            if (handOffsetFromGrabPoint.magnitude > 0.15) // && grabbableToPrevPos.magnitude < 2
+            if (handOffsetFromGrabPoint.magnitude > 0.15 && handOffsetFromGrabPoint.magnitude < 1)
             {
                 ReleaseObject();
             }

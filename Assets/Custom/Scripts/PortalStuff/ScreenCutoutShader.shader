@@ -45,22 +45,15 @@ Shader "Unlit/ScreenCutoutShader"
 				o.screenPos = ComputeScreenPos(o.vertex);
 				
 				float k = length(WorldSpaceViewDir(v.vertex));
+
 				// HTC Vive
-				//float distance = k * k * k;
-				//float offset = 0.005 * distance + 0.01;
+				float offset = 0.027 * (k );
 
 				// Quest 2
-				//float distance = k * k * k + 1;
-				float offset = 0.06 * (k + 0.1) ; // Quest 2
+				//float offset = 0.06 * (k + 0.1);
 				
-
-				//float offsetX = (1 - abs(rotation)) * 0.2;
-				//o.screenPos.x -= 0.5 * offsetX;
-				//o.screenPos.x += unity_StereoEyeIndex * offsetX;
 				o.screenPos.x -= offset;
 				o.screenPos.x += 2 * unity_StereoEyeIndex * offset;
-				//o.screenPos.y += 0.15 * rotation;
-				//o.screenPos.y -= unity_StereoEyeIndex * 0.3 * rotation;
 
 				return o;
 			}

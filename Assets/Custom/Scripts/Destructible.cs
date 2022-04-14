@@ -29,7 +29,7 @@ public class Destructible : MonoBehaviour
             Rigidbody hammerBody = other.gameObject.GetComponent<Rigidbody>();
             Debug.Log(hammerBody.velocity.magnitude);
             Debug.Log(hammerBody.angularVelocity.magnitude);
-            if (hammerBody.velocity.magnitude + hammerBody.angularVelocity.magnitude > 1.5f)
+            if (hammerBody.velocity.magnitude + hammerBody.angularVelocity.magnitude > 2.5f)
             {
                 Vector3 hammerPos = other.gameObject.transform.position;
                 Break(hammerPos, explosionForce);

@@ -22,22 +22,6 @@ public class PortalFoVChanger : Grabbable
             portalCameras.Add(portalCamObj.GetComponent<Camera>());
         }
 
-        if (aspectRatio)
-        {
-            Matrix4x4 viewMatrix = mainCam.worldToCameraMatrix;
-            //Matrix4x4 leftEyeMatrix = mainCam.GetStereoViewMatrix(Camera.StereoscopicEye.Left);
-            //Matrix4x4 rightEyeMatrix = mainCam.GetStereoViewMatrix(Camera.StereoscopicEye.Right);
-            //Debug.Log(leftEyeMatrix[12]);
-            //Debug.Log(leftEyeMatrix[13]);
-            //Debug.Log(leftEyeMatrix[14]);
-            //Debug.Log(rightEyeMatrix);
-            Debug.Log(viewMatrix);
-            viewMatrix[12] += 0.01f;
-            //mainCam.worldToCameraMatrix = viewMatrix;
-            
-            Debug.Log(mainCam.worldToCameraMatrix);
-        }
-        
     }
 
     // Update is called once per frame

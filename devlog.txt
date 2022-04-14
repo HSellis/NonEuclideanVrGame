@@ -159,3 +159,8 @@ https://forum.unity.com/threads/what-does-the-function-computescreenpos-in-unity
 * purustatav sein
 * purustatav klaas
 * staatiliste objektide korrastamine
+
+14.04
+* ühe käe inerts fixed
+* asjad ei lähe käest ära portaalist läbi minnes
+* portali renderdamise lihvimine
