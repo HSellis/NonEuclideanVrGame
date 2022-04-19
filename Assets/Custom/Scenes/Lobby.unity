@@ -287,7 +287,7 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &479118032
+--- !u!43 &127511303
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -304,8 +304,8 @@ Mesh:
     firstVertex: 0
     vertexCount: 8
     localAABB:
-      m_Center: {x: 0, y: 0.01, z: 0}
-      m_Extent: {x: 0.88961494, y: 0, z: 0.9511641}
+      m_Center: {x: 0.00000059604645, y: 0.01, z: 0.0000004172325}
+      m_Extent: {x: 2.1499991, y: 0, z: 1.6499999}
   m_Shapes:
     vertices: []
     shapes: []
@@ -384,7 +384,7 @@ Mesh:
       format: 0
       dimension: 0
     m_DataSize: 288
-    _typelessdata: 68573d3f0ad7233c18194dbf4c305e3eb4e4ba3c000000000000803f000000000000000068573dbf0ad7233c18194dbf4c305e3eb4e4ba3c000000000000803f0000803f0000000068573dbf0ad7233c18194d3f4c305e3eb4e4ba3c000000000000803f000000000000000068573d3f0ad7233c18194d3f4c305e3eb4e4ba3c000000000000803f0000803f00000000cebd633f0ad7233c7e7f73bf4c305e3eb4e4ba3c0000000000000000000000000000803fcebd63bf0ad7233c7e7f73bf4c305e3eb4e4ba3c00000000000000000000803f0000803fcebd63bf0ad7233c7e7f733f4c305e3eb4e4ba3c0000000000000000000000000000803fcebd633f0ad7233c7e7f733f4c305e3eb4e4ba3c00000000000000000000803f0000803f
+    _typelessdata: feffff3f0ad7233cfbffbfbf4c305e3eb4e4ba3c000000000000803f0000000000000000f4ffffbf0ad7233cf8ffbfbf4c305e3eb4e4ba3c000000000000803f0000803f00000000f4ffffbf0ad7233c0200c03f4c305e3eb4e4ba3c000000000000803f0000000000000000fdffff3f0ad7233c0200c03f4c305e3eb4e4ba3c000000000000803f0000803f00000000999909400ad7233c2e33d3bf4c305e3eb4e4ba3c0000000000000000000000000000803f949909c00ad7233c2b33d3bf4c305e3eb4e4ba3c00000000000000000000803f0000803f949909c00ad7233c3533d33f4c305e3eb4e4ba3c0000000000000000000000000000803f989909400ad7233c3533d33f4c305e3eb4e4ba3c00000000000000000000803f0000803f
   m_CompressedMesh:
     m_Vertices:
       m_NumItems: 0
@@ -438,8 +438,8 @@ Mesh:
       m_BitSize: 0
     m_UVInfo: 0
   m_LocalAABB:
-    m_Center: {x: 0, y: 0.01, z: 0}
-    m_Extent: {x: 0.88961494, y: 0, z: 0.9511641}
+    m_Center: {x: 0.00000059604645, y: 0.01, z: 0.0000004172325}
+    m_Extent: {x: 2.1499991, y: 0, z: 1.6499999}
   m_MeshUsageFlags: 0
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
@@ -920,6 +920,42 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!21 &690253924
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Sprites/Default
+  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - PixelSnap: 0
+    - _EnableExternalAlpha: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1852,11 +1888,11 @@ PrefabInstance:
     - target: {fileID: 2348914, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1904508456}
+      objectReference: {fileID: 690253924}
     - target: {fileID: 3380982, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 479118032}
+      objectReference: {fileID: 127511303}
     - target: {fileID: 11489174, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
       propertyPath: size
       value: 0
@@ -5041,42 +5077,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!21 &1904508456
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Sprites/Default
-  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _AlphaTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - PixelSnap: 0
-    - _EnableExternalAlpha: 0
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1 &1975284284
 GameObject:
   m_ObjectHideFlags: 0
