@@ -165,3 +165,8 @@ https://forum.unity.com/threads/what-does-the-function-computescreenpos-in-unity
 * asjad ei lähe käest ära portaalist läbi minnes
 * portali renderdamise lihvimine
 * väiksed bug fixid, QoL improvements
+
+18.04
+* küsimustik:
+  - https://forms.gle/gYKtCZZfqriFEkR47
+  - https://docs.google.com/forms/d/e/1FAIpQLScDE1jt4EBiT_t7Lxz_TLHVLVmfPqCiKh4AtwQvn1gJKaytdw/viewform?usp=sf_link
