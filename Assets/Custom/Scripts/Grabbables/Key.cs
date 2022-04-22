@@ -29,8 +29,8 @@ public class Key : Grabbable
 
         if (transform.position.y < -200)
         {
-            transform.position = origPos + new Vector3(0, 0.1f, 0);
             GetComponent<Rigidbody>().velocity = Vector3.zero;
+            transform.position = origPos + new Vector3(0, 0.1f, 0);
         }
     }
 
