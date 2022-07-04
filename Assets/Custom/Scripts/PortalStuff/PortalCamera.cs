@@ -14,11 +14,11 @@ public class PortalCamera : MonoBehaviour
     public Transform otherRoom;
 
     // Quest 2
-    //private float fieldOfView = 95;
-    //private float aspectRatio = 1;
+    private float fieldOfView = 95;
+    private float aspectRatio = 1;
     // HTC Vive Pro
-    private float fieldOfView = 110;
-    private float aspectRatio = 0.85f;
+    //private float fieldOfView = 110;
+    //private float aspectRatio = 0.85f;
 
 
     void Start()
@@ -30,8 +30,8 @@ public class PortalCamera : MonoBehaviour
         }
         
         //camera1LeftEye.targetTexture = new RenderTexture(Screen.width, Screen.height, 24);
-        camera.targetTexture = new RenderTexture(2400, 2650, 24); // HTC Vive
-        //camera.targetTexture = new RenderTexture(1832, 1920, 24); // Oculus Quest 2
+        //camera.targetTexture = new RenderTexture(2400, 2650, 24); // HTC Vive
+        camera.targetTexture = new RenderTexture(1832, 1920, 24); // Oculus Quest 2
         cameraTextureMat.mainTexture = camera.targetTexture;
 
         camera.aspect = aspectRatio;
