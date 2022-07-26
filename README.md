@@ -9,3 +9,6 @@ https://owncloud.ut.ee/owncloud/index.php/s/nA7ZidS2oAYQckT
 
 ## Build download
 https://owncloud.ut.ee/owncloud/index.php/s/XM8Br73bA6eWzG6
+
+## Poster
+https://courses.cs.ut.ee/student_projects/download/519.pdf
