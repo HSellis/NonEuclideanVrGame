@@ -12,3 +12,6 @@ https://owncloud.ut.ee/owncloud/index.php/s/XM8Br73bA6eWzG6
 
 ## Poster
 https://courses.cs.ut.ee/student_projects/download/519.pdf
+
+## Thesis PDF
+https://comserv.cs.ut.ee/ati_thesis/datasheet.php?id=74350
